@@ -1,7 +1,7 @@
 import json
 import os
-from core.selector_unidades import elegir_momentos_por_unidades
 
+from core.selector_unidades import elegir_momentos_por_unidades
 from core.transcripcion import transcribir, liberar_modelo
 from core.selector import elegir_momentos
 from core.cortador import cortar_clips, a_segundos
