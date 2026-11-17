@@ -112,7 +112,12 @@ def resolver_duracion(duracion, perfil):
     if duracion is None:
         return PERFILES[perfil]["duracion"]
     if isinstance(duracion, str):
-        return DURACIONES.get(duracion, PERFILES[perfil]["duracion"])
+        clave = duracion.strip().lower()
+        if clave not in DURACIONES:
+            print(f"[Selector] La duración '{duracion}' no existe (opciones: {', '.join(DURACIONES)}). "
+                  f"Uso la del perfil.")
+            return PERFILES[perfil]["duracion"]
+        return DURACIONES[clave]
     d_min, d_max = duracion
     return (float(d_min), float(d_max))
 
@@ -249,7 +254,7 @@ def elegir_momentos(segmentos, max_clips=5, tipo="auto", contexto="", duracion=N
         tipo = "general"
 
     d_min, d_max = resolver_duracion(duracion, tipo)
-    auto = duracion == "auto"
+    auto = isinstance(duracion, str) and duracion.strip().lower() == "auto"
     p = PERFILES[tipo]
     print(f"[Selector] Tipo: {tipo} | duración: {d_min:.0f}-{d_max:.0f}s | {len(segmentos)} segmentos")
     candidatos = []
