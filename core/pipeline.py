@@ -1,5 +1,6 @@
 import json
 import os
+from core.selector_unidades import elegir_momentos_por_unidades
 
 from core.transcripcion import transcribir, liberar_modelo
 from core.selector import elegir_momentos
@@ -25,20 +26,27 @@ def _transcribir_con_cache(ruta_video):
     return segmentos
 
 
-def procesar_video(ruta_video, tipo="auto", contexto="", formato="borroso",
-                   duracion=None, max_clips=5):
-    """Proceso completo para UN video: la IA elige los momentos."""
+def procesar_video(ruta_video, tipo="auto", contexto="", formato="borroso", duracion=None,
+                   max_clips=5, motor="unidades", relleno_antes=2.5, relleno_despues=2.5):
+    """Proceso completo para UN video. motor: 'unidades' (nuevo) o 'clasico' (anterior)."""
     segmentos = _transcribir_con_cache(ruta_video)
-    clips = elegir_momentos(segmentos, max_clips=max_clips, tipo=tipo,
-                            contexto=contexto, duracion=duracion)
+    if motor == "unidades":
+        clips = elegir_momentos_por_unidades(
+            segmentos, max_clips=max_clips, tipo=tipo, contexto=contexto, duracion=duracion,
+            relleno_antes=relleno_antes, relleno_despues=relleno_despues,
+        )
+    else:
+        clips = elegir_momentos(segmentos, max_clips=max_clips, tipo=tipo,
+                                contexto=contexto, duracion=duracion)
     liberar_ollama()
     return cortar_clips(ruta_video, clips, formato=formato)
 
 
-def modo_manual(ruta_video, tipo="auto", contexto="", formato="borroso",
-                duracion=None, max_clips=5):
+def modo_manual(ruta_video, tipo="auto", contexto="", formato="borroso", duracion=None,
+                max_clips=5, motor="unidades", relleno_antes=2.5, relleno_despues=2.5):
     """Tú das el video y la IA elige los momentos."""
-    return procesar_video(ruta_video, tipo, contexto, formato, duracion, max_clips)
+    return procesar_video(ruta_video, tipo, contexto, formato, duracion,
+                          max_clips, motor, relleno_antes, relleno_despues)
 
 def modo_rango(ruta_video, rangos, formato="borroso"):
     """Tú eliges los minutos exactos. rangos = [("05:12", "06:00"), ...]"""

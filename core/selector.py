@@ -1,27 +1,62 @@
 from core.llm import pedir_json
 
+REGLAS_COMUNES = """- El clip debe entenderse por sí solo, sin haber visto el resto del video.
+- Debe empezar en una frase fuerte y completa (nunca con "y", "pero", "entonces" ni con un "eso" que se refiere a algo anterior) y terminar en una frase completa, de preferencia un remate, un chiste o una conclusión.
+- Evita saludos, despedidas, pedir suscripciones o likes, patrocinios y tiempos muertos.
+- "titulo": un gancho de máximo 8 palabras, como lo escribiría un creador de TikTok. No una descripción."""
+
 PERFILES = {
     "general": {
         "descripcion": "Video con una o varias personas hablando, sin formato especial.",
         "duracion": (20, 60),
         "exigir": [],
         "reglas": (
-            "- Empieza con un gancho fuerte (pregunta, afirmación polémica, historia, dato sorprendente).\n"
-            "- Tiene la idea completa y termina con cierre."
+            "- Estructura ideal: GANCHO (pregunta, afirmación polémica, historia o dato sorprendente) "
+            "-> desarrollo -> REMATE o cierre.\n"
+            "- Prefiere ideas completas con emoción, humor, conflicto o sorpresa."
         ),
     },
     "reaccion": {
-        "descripcion": "Un creador ve o escucha contenido ajeno (TikToks, videos, clips) y reacciona o comenta.",
+        "descripcion": (
+            "Un creador (youtuber, streamer o grupo) ve o escucha contenido ajeno -TikToks, videos, "
+            "noticias, tráilers, música- y reacciona con emoción, burla, crítica o comentario. "
+            "La reacción es lo central; el contenido ajeno se muestra para que se entienda a qué reacciona."
+        ),
         "duracion": (30, 90),
         "exigir": ["incluye_contenido_original", "incluye_reaccion"],
         "reglas": (
-            "- Es un VIDEO DE REACCIÓN. Un buen clip SIEMPRE tiene las DOS partes juntas: "
-            "(1) el momento del contenido original que se muestra y (2) la reacción o comentario del creador a ese contenido.\n"
-            "- NUNCA elijas un fragmento que sea solo el contenido original sin que el creador reaccione, "
-            "ni uno que sea solo comentario sin que se entienda a qué reacciona.\n"
-            "- Pistas del contenido original: suena como otra persona, narración o historia ajena. "
-            "Pistas de la reacción: risas, exclamaciones, opiniones en primera persona ('no puede ser', 'yo creo', 'qué fuerte').\n"
-            "- Las mejores reacciones son las más intensas: sorpresa, risa, indignación o un comentario gracioso."
+            "- Un buen clip tiene tres partes en este orden: (1) PLANTEAMIENTO: el contenido original, "
+            "lo que se cuenta o se muestra; (2) REACCIÓN: sorpresa, risa, indignación, burla o un "
+            "comentario ingenioso del creador; (3) REMATE: un chiste, una conclusión o la frase más fuerte.\n"
+            "- Es OBLIGATORIO que el clip incluya el contenido original Y la reacción juntos. Nunca elijas "
+            "solo el contenido ajeno sin que el creador reaccione, ni solo comentarios sin que se entienda "
+            "a qué reaccionan. Si el contenido original no se oye en la transcripción, el creador suele "
+            "describirlo (\"mira, el tipo...\", \"dice que...\"): eso cuenta como contenido original.\n"
+            "- Pistas del CONTENIDO ORIGINAL: una historia o narración en tercera persona, frases largas "
+            "y seguidas con otro estilo (locución, guion), situaciones que se exponen sin opinión, "
+            "diálogos de personas ajenas al creador.\n"
+            "- Pistas de la REACCIÓN: interjecciones (\"no puede ser\", \"¿qué?\", \"espera\", \"qué fuerte\", "
+            "\"jajaja\"), preguntas retóricas, opiniones en primera persona (\"yo creo\", \"a mí me parece\"), "
+            "burlas, comparaciones, comentarios dirigidos a la audiencia o al chat. Ojo: la transcripción "
+            "a veces omite risas y gritos.\n"
+            "- Los mejores clips: reacción intensa y auténtica, comentario muy gracioso, o un contraste "
+            "fuerte entre lo absurdo del original y la reacción.\n"
+            "- Evita: que el creador hable de otros temas (saludos, suscripciones, patrocinios), lectura "
+            "del chat sin gracia, repeticiones, y cortes en medio del contenido original antes de que se entienda."
+        ),
+        "ejemplo": (
+            "EJEMPLO (inventado, solo para mostrar el formato; no copies sus datos):\n"
+            "[200] Y el señor del video construye un barco con botellas de plástico\n"
+            "[208] dice que lleva tres meses juntando botellas y que va a cruzar el río con eso\n"
+            "[221] Que no necesita motor, que con la corriente le alcanza, que ya lo calculó todo\n"
+            "[234] Espera, espera, ¿con eso? ¿Y no se hunde?\n"
+            "[238] No puede ser, o sea, ni siquiera le puso un remo. Jajaja\n"
+            "[246] Bro, a ver, ¿y si se moja la mochila qué? Esto es lo más absurdo que he visto hoy\n"
+            "[262] y lo mejor es que el tipo sigue convencido de que va a llegar\n"
+            "Respuesta esperada:\n"
+            '{"clips": [{"inicio": 200, "fin": 266, "titulo": "Cruza el río en un barco de botellas", '
+            '"razon": "Planteamiento claro del barco, reacción de incredulidad y remate gracioso", '
+            '"puntaje": 9, "incluye_contenido_original": true, "incluye_reaccion": true}]}'
         ),
     },
     "podcast": {
@@ -29,9 +64,13 @@ PERFILES = {
         "duracion": (30, 90),
         "exigir": [],
         "reglas": (
-            "- Elige historias completas, opiniones fuertes, confesiones, debates o momentos graciosos.\n"
-            "- Que se entienda sin haber visto el resto: incluye la pregunta o el contexto que lo provoca.\n"
-            "- Evita presentaciones, saludos y charla de relleno."
+            "- Estructura ideal: PROVOCACIÓN o pregunta -> respuesta, anécdota u opinión fuerte -> "
+            "REMATE (frase memorable, chiste o conclusión).\n"
+            "- Elige anécdotas con inicio, nudo y desenlace, opiniones polémicas, confesiones, datos "
+            "sorprendentes, desacuerdos entre los participantes y momentos graciosos.\n"
+            "- Incluye la pregunta o el contexto mínimo que provoca el momento. Evita lo que depende de "
+            "algo dicho antes (\"como te decía\", \"eso que mencionamos\").\n"
+            "- Evita presentaciones, publicidad, charla de relleno y despedidas."
         ),
     },
     "stream": {
@@ -39,8 +78,11 @@ PERFILES = {
         "duracion": (20, 60),
         "exigir": [],
         "reglas": (
-            "- Busca picos de emoción: gritos, risas, sustos, jugadas épicas, anécdotas graciosas.\n"
-            "- Evita tiempos muertos, lectura del chat sin gracia y silencios."
+            "- Busca picos de emoción: gritos, risas, sustos, jugadas épicas, fallos graciosos, "
+            "reacciones a donaciones o al chat.\n"
+            "- Estructura ideal: PREPARACIÓN (qué intenta hacer o qué pasa) -> MOMENTO CLAVE -> REACCIÓN del streamer.\n"
+            "- Que se entienda qué ocurrió sin ver la pantalla: si el streamer no lo explica, el momento es débil.\n"
+            "- Evita tiempos muertos, pantallas de carga, lectura del chat sin gracia, silencios y charla técnica."
         ),
     },
     "tutorial": {
@@ -48,8 +90,11 @@ PERFILES = {
         "duracion": (30, 90),
         "exigir": [],
         "reglas": (
-            "- Elige un solo consejo, truco o idea que se entienda completo por sí solo.\n"
-            "- Debe empezar planteando el problema o la pregunta y terminar con la solución."
+            "- Elige UN solo consejo, truco o idea que se entienda completo por sí solo.\n"
+            "- Estructura ideal: PROBLEMA o pregunta (\"¿cómo...?\", \"el error más común es...\") -> "
+            "EXPLICACIÓN en pocos pasos -> RESULTADO o conclusión.\n"
+            "- Prefiere explicaciones con un dato concreto, un ejemplo o un antes y después.\n"
+            "- Evita introducciones, \"antes de empezar\", pedir suscripciones y pasos a medias."
         ),
     },
 }
@@ -117,6 +162,7 @@ def _prompt(parte, perfil, contexto, d_min, d_max, auto=False):
     texto = "\n".join(f"[{int(s['inicio'])}] {s['texto']}" for s in parte)
     extra_json = "".join(f', "{k}": true' for k in p["exigir"])
     extra_ctx = f"\nCONTEXTO DEL VIDEO (dado por el usuario): {contexto}\n" if contexto else ""
+    ejemplo = f"\n{p['ejemplo']}\n" if p.get("ejemplo") else ""
     if auto:
         linea_duracion = (
             f"- Duración: la que necesite cada idea para entenderse completa, entre "
@@ -134,8 +180,9 @@ Elige hasta 3 fragmentos que funcionen solos como clip, con estas reglas:
 {linea_duracion}
 - Si el momento clave es corto, márcalo igual: el sistema le añadirá el contexto necesario antes y después.
 {p["reglas"]}
+{REGLAS_COMUNES}
 - Si no hay nada realmente bueno, devuelve una lista vacía. Es mejor pocos clips buenos que muchos regulares.
-
+{ejemplo}
 Puntaje de 1 a 10: 9-10 es excelente, 7-8 es bueno, menos de 7 no lo incluyas.
 Escribe primero "razon" (por qué funciona) y después el puntaje.
 
@@ -247,10 +294,12 @@ def elegir_momentos(segmentos, max_clips=5, tipo="auto", contexto="", duracion=N
             if debug and abs(duracion_final - duracion_modelo) > 1:
                 print(f"   ajustado {duracion_modelo:.0f}s -> {duracion_final:.0f}s: {clip['titulo']}")
 
-            if duracion_final < d_min - 8:
+            if duracion_final < d_min * 0.7:
                 if debug:
                     print(f"   descartado (quedó de {duracion_final:.0f}s): {clip['titulo']}")
                 continue
+            # Marca los que quedaron bajo la duración preferente, para la pantalla de aprobación
+            clip["corto"] = duracion_final < d_min
             candidatos.append(clip)
 
     candidatos.sort(key=lambda c: c["puntaje"], reverse=True)
