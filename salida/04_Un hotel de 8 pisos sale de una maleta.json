@@ -1,0 +1,2038 @@
+{
+  "archivo": "salida\\04_Un hotel de 8 pisos sale de una maleta.mp4",
+  "video": "C:\\Proyectos\\clipping-ia\\videos\\prueba.mp4",
+  "inicio": 531.47,
+  "fin": 646.05,
+  "ventana": [
+    525.47,
+    652.05
+  ],
+  "titulo": "Un hotel de 8 pisos sale de una maleta",
+  "razon": "El creador reacciona a un contenido absurdo que explica cómo un hotel de 8 pisos podría salir de una maleta y cómo se podría usar como ducha. La reacción es intensa, con burla y humor, y el remate es una frase fuerte y divertida. El contenido original es claro y la reacción es auténtica y relevante.",
+  "puntaje": 9.0,
+  "formato": "borroso",
+  "idioma": "es",
+  "estilo_sub": {
+    "tamano": 56,
+    "fuente": "Arial",
+    "archivo_fuente": null,
+    "color_texto": "#FFFFFF",
+    "color_resaltado": "#FFFF00",
+    "color_borde": "#000000",
+    "grosor_borde": 5,
+    "mayusculas": true,
+    "posicion": 27
+  },
+  "palabras": [
+    {
+      "inicio": 525.47,
+      "fin": 525.67,
+      "texto": "Amigos"
+    },
+    {
+      "inicio": 525.67,
+      "fin": 525.89,
+      "texto": "también"
+    },
+    {
+      "inicio": 525.89,
+      "fin": 526.29,
+      "texto": "quieren"
+    },
+    {
+      "inicio": 526.29,
+      "fin": 526.69,
+      "texto": "venir,"
+    },
+    {
+      "inicio": 526.83,
+      "fin": 527.05,
+      "texto": "coloca"
+    },
+    {
+      "inicio": 527.05,
+      "fin": 527.39,
+      "texto": "más"
+    },
+    {
+      "inicio": 527.39,
+      "fin": 527.57,
+      "texto": "y"
+    },
+    {
+      "inicio": 527.57,
+      "fin": 527.71,
+      "texto": "más"
+    },
+    {
+      "inicio": 527.71,
+      "fin": 528.27,
+      "texto": "pisos,"
+    },
+    {
+      "inicio": 528.33,
+      "fin": 528.99,
+      "texto": "contrata"
+    },
+    {
+      "inicio": 528.99,
+      "fin": 529.09,
+      "texto": "a"
+    },
+    {
+      "inicio": 529.09,
+      "fin": 529.33,
+      "texto": "alguien"
+    },
+    {
+      "inicio": 529.33,
+      "fin": 529.49,
+      "texto": "que"
+    },
+    {
+      "inicio": 529.49,
+      "fin": 529.57,
+      "texto": "dé"
+    },
+    {
+      "inicio": 529.57,
+      "fin": 529.79,
+      "texto": "las"
+    },
+    {
+      "inicio": 529.79,
+      "fin": 530.25,
+      "texto": "llaves."
+    },
+    {
+      "inicio": 530.53,
+      "fin": 530.97,
+      "texto": "Ahora"
+    },
+    {
+      "inicio": 530.97,
+      "fin": 531.37,
+      "texto": "tienes"
+    },
+    {
+      "inicio": 531.37,
+      "fin": 531.65,
+      "texto": "un"
+    },
+    {
+      "inicio": 531.65,
+      "fin": 531.97,
+      "texto": "hotel."
+    },
+    {
+      "inicio": 532.37,
+      "fin": 532.49,
+      "texto": "De"
+    },
+    {
+      "inicio": 532.49,
+      "fin": 532.67,
+      "texto": "una"
+    },
+    {
+      "inicio": 532.67,
+      "fin": 533.17,
+      "texto": "maleta"
+    },
+    {
+      "inicio": 533.17,
+      "fin": 533.33,
+      "texto": "todo"
+    },
+    {
+      "inicio": 533.33,
+      "fin": 533.51,
+      "texto": "lo"
+    },
+    {
+      "inicio": 533.51,
+      "fin": 533.61,
+      "texto": "que"
+    },
+    {
+      "inicio": 533.61,
+      "fin": 533.91,
+      "texto": "hizo."
+    },
+    {
+      "inicio": 533.99,
+      "fin": 534.31,
+      "texto": "De"
+    },
+    {
+      "inicio": 534.31,
+      "fin": 534.43,
+      "texto": "una"
+    },
+    {
+      "inicio": 534.43,
+      "fin": 534.79,
+      "texto": "maleta"
+    },
+    {
+      "inicio": 534.79,
+      "fin": 535.09,
+      "texto": "salió"
+    },
+    {
+      "inicio": 535.09,
+      "fin": 535.19,
+      "texto": "un"
+    },
+    {
+      "inicio": 535.19,
+      "fin": 535.41,
+      "texto": "hotel"
+    },
+    {
+      "inicio": 535.41,
+      "fin": 535.71,
+      "texto": "de"
+    },
+    {
+      "inicio": 535.71,
+      "fin": 536.07,
+      "texto": "ocho"
+    },
+    {
+      "inicio": 536.07,
+      "fin": 536.39,
+      "texto": "pisos."
+    },
+    {
+      "inicio": 536.47,
+      "fin": 536.59,
+      "texto": "Hay"
+    },
+    {
+      "inicio": 536.59,
+      "fin": 536.69,
+      "texto": "un"
+    },
+    {
+      "inicio": 536.69,
+      "fin": 537.03,
+      "texto": "99"
+    },
+    {
+      "inicio": 537.03,
+      "fin": 537.77,
+      "texto": ",5"
+    },
+    {
+      "inicio": 537.77,
+      "fin": 538.15,
+      "texto": "%"
+    },
+    {
+      "inicio": 538.15,
+      "fin": 538.47,
+      "texto": "de"
+    },
+    {
+      "inicio": 538.47,
+      "fin": 539.17,
+      "texto": "probabilidad"
+    },
+    {
+      "inicio": 539.17,
+      "fin": 539.29,
+      "texto": "de"
+    },
+    {
+      "inicio": 539.29,
+      "fin": 539.39,
+      "texto": "que"
+    },
+    {
+      "inicio": 539.39,
+      "fin": 539.73,
+      "texto": "puedas"
+    },
+    {
+      "inicio": 539.73,
+      "fin": 540.17,
+      "texto": "respirar"
+    },
+    {
+      "inicio": 540.17,
+      "fin": 540.31,
+      "texto": "sin"
+    },
+    {
+      "inicio": 540.31,
+      "fin": 540.67,
+      "texto": "problemas"
+    },
+    {
+      "inicio": 540.67,
+      "fin": 540.95,
+      "texto": "en"
+    },
+    {
+      "inicio": 540.95,
+      "fin": 541.05,
+      "texto": "el"
+    },
+    {
+      "inicio": 541.05,
+      "fin": 541.29,
+      "texto": "fondo"
+    },
+    {
+      "inicio": 541.29,
+      "fin": 541.39,
+      "texto": "de"
+    },
+    {
+      "inicio": 541.39,
+      "fin": 541.49,
+      "texto": "una"
+    },
+    {
+      "inicio": 541.49,
+      "fin": 541.93,
+      "texto": "piscina"
+    },
+    {
+      "inicio": 541.93,
+      "fin": 542.47,
+      "texto": "olímpica,"
+    },
+    {
+      "inicio": 542.49,
+      "fin": 542.93,
+      "texto": "siempre"
+    },
+    {
+      "inicio": 542.93,
+      "fin": 543.07,
+      "texto": "y"
+    },
+    {
+      "inicio": 543.07,
+      "fin": 543.27,
+      "texto": "cuando"
+    },
+    {
+      "inicio": 543.27,
+      "fin": 543.55,
+      "texto": "esté"
+    },
+    {
+      "inicio": 543.55,
+      "fin": 543.89,
+      "texto": "completamente"
+    },
+    {
+      "inicio": 543.89,
+      "fin": 544.61,
+      "texto": "vacía."
+    },
+    {
+      "inicio": 544.77,
+      "fin": 545.21,
+      "texto": "Según"
+    },
+    {
+      "inicio": 545.21,
+      "fin": 545.31,
+      "texto": "el"
+    },
+    {
+      "inicio": 545.31,
+      "fin": 545.73,
+      "texto": "Instituto"
+    },
+    {
+      "inicio": 545.73,
+      "fin": 545.85,
+      "texto": "de"
+    },
+    {
+      "inicio": 545.85,
+      "fin": 546.23,
+      "texto": "Ciencias"
+    },
+    {
+      "inicio": 546.23,
+      "fin": 546.69,
+      "texto": "Acuáticas,"
+    },
+    {
+      "inicio": 546.91,
+      "fin": 547.23,
+      "texto": "esto"
+    },
+    {
+      "inicio": 547.23,
+      "fin": 547.61,
+      "texto": "ocurre"
+    },
+    {
+      "inicio": 547.61,
+      "fin": 547.81,
+      "texto": "porque"
+    },
+    {
+      "inicio": 547.81,
+      "fin": 548.05,
+      "texto": "no"
+    },
+    {
+      "inicio": 548.05,
+      "fin": 548.31,
+      "texto": "tiene"
+    },
+    {
+      "inicio": 548.31,
+      "fin": 548.69,
+      "texto": "agua."
+    },
+    {
+      "inicio": 548.95,
+      "fin": 549.25,
+      "texto": "¡Guau!"
+    },
+    {
+      "inicio": 549.35,
+      "fin": 549.63,
+      "texto": "Mira,"
+    },
+    {
+      "inicio": 549.69,
+      "fin": 549.83,
+      "texto": "mira,"
+    },
+    {
+      "inicio": 549.85,
+      "fin": 549.95,
+      "texto": "mira,"
+    },
+    {
+      "inicio": 549.99,
+      "fin": 550.21,
+      "texto": "te"
+    },
+    {
+      "inicio": 550.21,
+      "fin": 550.35,
+      "texto": "está"
+    },
+    {
+      "inicio": 550.35,
+      "fin": 550.73,
+      "texto": "llamando"
+    },
+    {
+      "inicio": 550.73,
+      "fin": 550.85,
+      "texto": "la"
+    },
+    {
+      "inicio": 550.85,
+      "fin": 551.35,
+      "texto": "solicitud"
+    },
+    {
+      "inicio": 551.35,
+      "fin": 551.41,
+      "texto": "de"
+    },
+    {
+      "inicio": 551.41,
+      "fin": 551.71,
+      "texto": "empleo."
+    },
+    {
+      "inicio": 551.91,
+      "fin": 552.35,
+      "texto": "¡Colgá"
+    },
+    {
+      "inicio": 552.35,
+      "fin": 552.61,
+      "texto": "esa"
+    },
+    {
+      "inicio": 552.61,
+      "fin": 552.91,
+      "texto": "madre!"
+    },
+    {
+      "inicio": 552.99,
+      "fin": 553.11,
+      "texto": "¿Por"
+    },
+    {
+      "inicio": 553.11,
+      "fin": 553.15,
+      "texto": "qué"
+    },
+    {
+      "inicio": 553.15,
+      "fin": 553.29,
+      "texto": "me"
+    },
+    {
+      "inicio": 553.29,
+      "fin": 553.47,
+      "texto": "tomó"
+    },
+    {
+      "inicio": 553.47,
+      "fin": 553.65,
+      "texto": "ella?"
+    },
+    {
+      "inicio": 553.77,
+      "fin": 554.21,
+      "texto": "¡Colgá"
+    },
+    {
+      "inicio": 554.21,
+      "fin": 554.47,
+      "texto": "esa"
+    },
+    {
+      "inicio": 554.47,
+      "fin": 554.81,
+      "texto": "mierda!"
+    },
+    {
+      "inicio": 554.97,
+      "fin": 555.09,
+      "texto": "¿Cuál"
+    },
+    {
+      "inicio": 555.09,
+      "fin": 555.21,
+      "texto": "es?"
+    },
+    {
+      "inicio": 555.21,
+      "fin": 555.43,
+      "texto": "Estamos"
+    },
+    {
+      "inicio": 555.43,
+      "fin": 555.85,
+      "texto": "viendo"
+    },
+    {
+      "inicio": 555.85,
+      "fin": 556.29,
+      "texto": "shorts"
+    },
+    {
+      "inicio": 556.29,
+      "fin": 556.67,
+      "texto": "de"
+    },
+    {
+      "inicio": 556.67,
+      "fin": 557.21,
+      "texto": "utilidad"
+    },
+    {
+      "inicio": 557.21,
+      "fin": 557.41,
+      "texto": "Tú"
+    },
+    {
+      "inicio": 557.41,
+      "fin": 557.95,
+      "texto": "apestas"
+    },
+    {
+      "inicio": 557.95,
+      "fin": 558.07,
+      "texto": "a"
+    },
+    {
+      "inicio": 558.07,
+      "fin": 558.57,
+      "texto": "caca"
+    },
+    {
+      "inicio": 558.57,
+      "fin": 559.15,
+      "texto": "Sí,"
+    },
+    {
+      "inicio": 559.29,
+      "fin": 559.97,
+      "texto": "es"
+    },
+    {
+      "inicio": 559.97,
+      "fin": 561.13,
+      "texto": "cierto,"
+    },
+    {
+      "inicio": 561.23,
+      "fin": 561.35,
+      "texto": "no"
+    },
+    {
+      "inicio": 561.35,
+      "fin": 561.45,
+      "texto": "me"
+    },
+    {
+      "inicio": 561.45,
+      "fin": 561.67,
+      "texto": "bañé"
+    },
+    {
+      "inicio": 561.67,
+      "fin": 562.17,
+      "texto": "Échate"
+    },
+    {
+      "inicio": 562.17,
+      "fin": 562.41,
+      "texto": "agua"
+    },
+    {
+      "inicio": 562.41,
+      "fin": 562.61,
+      "texto": "y"
+    },
+    {
+      "inicio": 562.61,
+      "fin": 562.97,
+      "texto": "sobate,"
+    },
+    {
+      "inicio": 563.13,
+      "fin": 563.27,
+      "texto": "eso"
+    },
+    {
+      "inicio": 563.27,
+      "fin": 563.47,
+      "texto": "puede"
+    },
+    {
+      "inicio": 563.47,
+      "fin": 563.79,
+      "texto": "ayudar"
+    },
+    {
+      "inicio": 563.79,
+      "fin": 564.19,
+      "texto": "Pero"
+    },
+    {
+      "inicio": 564.19,
+      "fin": 564.45,
+      "texto": "ahora"
+    },
+    {
+      "inicio": 564.45,
+      "fin": 564.63,
+      "texto": "te"
+    },
+    {
+      "inicio": 564.63,
+      "fin": 564.93,
+      "texto": "quedas"
+    },
+    {
+      "inicio": 564.93,
+      "fin": 565.05,
+      "texto": "sin"
+    },
+    {
+      "inicio": 565.05,
+      "fin": 565.39,
+      "texto": "agua"
+    },
+    {
+      "inicio": 565.39,
+      "fin": 565.71,
+      "texto": "Así"
+    },
+    {
+      "inicio": 565.71,
+      "fin": 565.89,
+      "texto": "que"
+    },
+    {
+      "inicio": 565.89,
+      "fin": 566.49,
+      "texto": "construyes"
+    },
+    {
+      "inicio": 566.49,
+      "fin": 566.65,
+      "texto": "una"
+    },
+    {
+      "inicio": 566.65,
+      "fin": 567.03,
+      "texto": "plataforma"
+    },
+    {
+      "inicio": 567.03,
+      "fin": 567.47,
+      "texto": "encima"
+    },
+    {
+      "inicio": 567.47,
+      "fin": 567.73,
+      "texto": "de"
+    },
+    {
+      "inicio": 567.73,
+      "fin": 567.87,
+      "texto": "ti"
+    },
+    {
+      "inicio": 567.87,
+      "fin": 568.03,
+      "texto": "con"
+    },
+    {
+      "inicio": 568.03,
+      "fin": 568.21,
+      "texto": "un"
+    },
+    {
+      "inicio": 568.21,
+      "fin": 568.65,
+      "texto": "tubo"
+    },
+    {
+      "inicio": 568.65,
+      "fin": 568.75,
+      "texto": "Y"
+    },
+    {
+      "inicio": 568.75,
+      "fin": 568.87,
+      "texto": "la"
+    },
+    {
+      "inicio": 568.87,
+      "fin": 569.31,
+      "texto": "gravedad"
+    },
+    {
+      "inicio": 569.31,
+      "fin": 569.53,
+      "texto": "hace"
+    },
+    {
+      "inicio": 569.53,
+      "fin": 569.69,
+      "texto": "que"
+    },
+    {
+      "inicio": 569.69,
+      "fin": 569.81,
+      "texto": "te"
+    },
+    {
+      "inicio": 569.81,
+      "fin": 570.13,
+      "texto": "caiga"
+    },
+    {
+      "inicio": 570.13,
+      "fin": 570.25,
+      "texto": "el"
+    },
+    {
+      "inicio": 570.25,
+      "fin": 570.49,
+      "texto": "agua"
+    },
+    {
+      "inicio": 570.49,
+      "fin": 570.83,
+      "texto": "¡Oh,"
+    },
+    {
+      "inicio": 570.83,
+      "fin": 571.09,
+      "texto": "por"
+    },
+    {
+      "inicio": 571.09,
+      "fin": 571.53,
+      "texto": "Dios!"
+    },
+    {
+      "inicio": 571.61,
+      "fin": 572.07,
+      "texto": "Ya"
+    },
+    {
+      "inicio": 572.07,
+      "fin": 572.07,
+      "texto": "se"
+    },
+    {
+      "inicio": 572.07,
+      "fin": 572.21,
+      "texto": "pudo"
+    },
+    {
+      "inicio": 572.21,
+      "fin": 572.81,
+      "texto": "bañar,"
+    },
+    {
+      "inicio": 572.81,
+      "fin": 572.95,
+      "texto": "ok"
+    },
+    {
+      "inicio": 572.95,
+      "fin": 573.65,
+      "texto": "Necesito"
+    },
+    {
+      "inicio": 573.65,
+      "fin": 573.77,
+      "texto": "hacer"
+    },
+    {
+      "inicio": 573.77,
+      "fin": 573.99,
+      "texto": "algo"
+    },
+    {
+      "inicio": 573.99,
+      "fin": 574.25,
+      "texto": "así"
+    },
+    {
+      "inicio": 574.25,
+      "fin": 574.71,
+      "texto": "Coloca"
+    },
+    {
+      "inicio": 574.71,
+      "fin": 574.83,
+      "texto": "una"
+    },
+    {
+      "inicio": 574.83,
+      "fin": 575.21,
+      "texto": "rueda"
+    },
+    {
+      "inicio": 575.21,
+      "fin": 575.37,
+      "texto": "para"
+    },
+    {
+      "inicio": 575.37,
+      "fin": 575.81,
+      "texto": "cerrar"
+    },
+    {
+      "inicio": 575.81,
+      "fin": 576.01,
+      "texto": "y"
+    },
+    {
+      "inicio": 576.01,
+      "fin": 576.21,
+      "texto": "abrir"
+    },
+    {
+      "inicio": 576.21,
+      "fin": 576.51,
+      "texto": "cuando"
+    },
+    {
+      "inicio": 576.51,
+      "fin": 577.17,
+      "texto": "quieras"
+    },
+    {
+      "inicio": 577.17,
+      "fin": 577.39,
+      "texto": "Pero"
+    },
+    {
+      "inicio": 577.39,
+      "fin": 577.57,
+      "texto": "sigue"
+    },
+    {
+      "inicio": 577.57,
+      "fin": 577.81,
+      "texto": "siendo"
+    },
+    {
+      "inicio": 577.81,
+      "fin": 578.11,
+      "texto": "poco"
+    },
+    {
+      "inicio": 578.11,
+      "fin": 578.65,
+      "texto": "volumen"
+    },
+    {
+      "inicio": 578.65,
+      "fin": 578.99,
+      "texto": "Así"
+    },
+    {
+      "inicio": 578.99,
+      "fin": 579.23,
+      "texto": "que"
+    },
+    {
+      "inicio": 579.23,
+      "fin": 579.69,
+      "texto": "colocas"
+    },
+    {
+      "inicio": 579.69,
+      "fin": 579.85,
+      "texto": "un"
+    },
+    {
+      "inicio": 579.85,
+      "fin": 580.33,
+      "texto": "plato"
+    },
+    {
+      "inicio": 580.33,
+      "fin": 580.59,
+      "texto": "y"
+    },
+    {
+      "inicio": 580.59,
+      "fin": 580.69,
+      "texto": "le"
+    },
+    {
+      "inicio": 580.69,
+      "fin": 580.99,
+      "texto": "haces"
+    },
+    {
+      "inicio": 580.99,
+      "fin": 581.51,
+      "texto": "hoyos"
+    },
+    {
+      "inicio": 582.37,
+      "fin": 582.89,
+      "texto": "Por"
+    },
+    {
+      "inicio": 582.89,
+      "fin": 583.41,
+      "texto": "eso"
+    },
+    {
+      "inicio": 583.41,
+      "fin": 583.49,
+      "texto": "es"
+    },
+    {
+      "inicio": 583.49,
+      "fin": 583.59,
+      "texto": "que"
+    },
+    {
+      "inicio": 583.59,
+      "fin": 583.71,
+      "texto": "los"
+    },
+    {
+      "inicio": 583.71,
+      "fin": 584.11,
+      "texto": "hoteles"
+    },
+    {
+      "inicio": 584.11,
+      "fin": 584.37,
+      "texto": "tienen"
+    },
+    {
+      "inicio": 584.37,
+      "fin": 584.57,
+      "texto": "de"
+    },
+    {
+      "inicio": 584.57,
+      "fin": 584.85,
+      "texto": "esos"
+    },
+    {
+      "inicio": 584.85,
+      "fin": 585.21,
+      "texto": "Pero"
+    },
+    {
+      "inicio": 585.21,
+      "fin": 585.35,
+      "texto": "si"
+    },
+    {
+      "inicio": 585.35,
+      "fin": 585.49,
+      "texto": "es"
+    },
+    {
+      "inicio": 585.49,
+      "fin": 586.01,
+      "texto": "invierno,"
+    },
+    {
+      "inicio": 586.01,
+      "fin": 586.33,
+      "texto": "hará"
+    },
+    {
+      "inicio": 586.33,
+      "fin": 586.51,
+      "texto": "mucho"
+    },
+    {
+      "inicio": 586.51,
+      "fin": 586.93,
+      "texto": "frío"
+    },
+    {
+      "inicio": 586.93,
+      "fin": 587.05,
+      "texto": "y"
+    },
+    {
+      "inicio": 587.05,
+      "fin": 587.13,
+      "texto": "te"
+    },
+    {
+      "inicio": 587.13,
+      "fin": 587.39,
+      "texto": "dará"
+    },
+    {
+      "inicio": 587.39,
+      "fin": 588.01,
+      "texto": "hipotermia."
+    },
+    {
+      "inicio": 588.11,
+      "fin": 588.43,
+      "texto": "Para"
+    },
+    {
+      "inicio": 588.43,
+      "fin": 588.69,
+      "texto": "eso"
+    },
+    {
+      "inicio": 588.69,
+      "fin": 589.15,
+      "texto": "construye"
+    },
+    {
+      "inicio": 589.15,
+      "fin": 589.27,
+      "texto": "una"
+    },
+    {
+      "inicio": 589.27,
+      "fin": 589.63,
+      "texto": "planta"
+    },
+    {
+      "inicio": 589.63,
+      "fin": 589.93,
+      "texto": "nuclear"
+    },
+    {
+      "inicio": 589.93,
+      "fin": 590.19,
+      "texto": "y"
+    },
+    {
+      "inicio": 590.19,
+      "fin": 590.57,
+      "texto": "conéctalo"
+    },
+    {
+      "inicio": 590.57,
+      "fin": 590.73,
+      "texto": "con"
+    },
+    {
+      "inicio": 590.73,
+      "fin": 590.87,
+      "texto": "tu"
+    },
+    {
+      "inicio": 590.87,
+      "fin": 591.13,
+      "texto": "agua"
+    },
+    {
+      "inicio": 591.13,
+      "fin": 591.37,
+      "texto": "para"
+    },
+    {
+      "inicio": 591.37,
+      "fin": 591.69,
+      "texto": "poder"
+    },
+    {
+      "inicio": 591.69,
+      "fin": 592.49,
+      "texto": "calentarla."
+    },
+    {
+      "inicio": 593.21,
+      "fin": 593.73,
+      "texto": "Felicidades,"
+    },
+    {
+      "inicio": 593.95,
+      "fin": 594.27,
+      "texto": "tienes"
+    },
+    {
+      "inicio": 594.27,
+      "fin": 594.49,
+      "texto": "una"
+    },
+    {
+      "inicio": 594.49,
+      "fin": 594.83,
+      "texto": "ducha"
+    },
+    {
+      "inicio": 594.83,
+      "fin": 595.35,
+      "texto": "caliente."
+    },
+    {
+      "inicio": 595.63,
+      "fin": 595.81,
+      "texto": "Eso"
+    },
+    {
+      "inicio": 595.81,
+      "fin": 596.23,
+      "texto": "hubiera"
+    },
+    {
+      "inicio": 596.23,
+      "fin": 596.43,
+      "texto": "sido"
+    },
+    {
+      "inicio": 596.43,
+      "fin": 596.77,
+      "texto": "muy"
+    },
+    {
+      "inicio": 596.77,
+      "fin": 597.13,
+      "texto": "útil"
+    },
+    {
+      "inicio": 597.13,
+      "fin": 597.51,
+      "texto": "hace"
+    },
+    {
+      "inicio": 597.51,
+      "fin": 597.89,
+      "texto": "como"
+    },
+    {
+      "inicio": 597.89,
+      "fin": 598.15,
+      "texto": "100"
+    },
+    {
+      "inicio": 598.15,
+      "fin": 598.65,
+      "texto": "años,"
+    },
+    {
+      "inicio": 598.73,
+      "fin": 598.97,
+      "texto": "papito."
+    },
+    {
+      "inicio": 599.15,
+      "fin": 599.29,
+      "texto": "No,"
+    },
+    {
+      "inicio": 599.31,
+      "fin": 599.53,
+      "texto": "mira"
+    },
+    {
+      "inicio": 599.53,
+      "fin": 599.81,
+      "texto": "que"
+    },
+    {
+      "inicio": 599.81,
+      "fin": 600.11,
+      "texto": "ahí"
+    },
+    {
+      "inicio": 600.11,
+      "fin": 600.31,
+      "texto": "está"
+    },
+    {
+      "inicio": 600.31,
+      "fin": 600.63,
+      "texto": "contando"
+    },
+    {
+      "inicio": 600.63,
+      "fin": 600.75,
+      "texto": "la"
+    },
+    {
+      "inicio": 600.75,
+      "fin": 600.97,
+      "texto": "historia"
+    },
+    {
+      "inicio": 600.97,
+      "fin": 601.17,
+      "texto": "de"
+    },
+    {
+      "inicio": 601.17,
+      "fin": 601.35,
+      "texto": "cómo"
+    },
+    {
+      "inicio": 601.35,
+      "fin": 601.87,
+      "texto": "sucedió"
+    },
+    {
+      "inicio": 601.87,
+      "fin": 602.07,
+      "texto": "eso."
+    },
+    {
+      "inicio": 602.09,
+      "fin": 602.27,
+      "texto": "Ah,"
+    },
+    {
+      "inicio": 602.53,
+      "fin": 602.69,
+      "texto": "yo"
+    },
+    {
+      "inicio": 602.69,
+      "fin": 602.75,
+      "texto": "veía"
+    },
+    {
+      "inicio": 602.75,
+      "fin": 602.85,
+      "texto": "que"
+    },
+    {
+      "inicio": 602.85,
+      "fin": 602.97,
+      "texto": "nos"
+    },
+    {
+      "inicio": 602.97,
+      "fin": 603.15,
+      "texto": "estaba"
+    },
+    {
+      "inicio": 603.15,
+      "fin": 604.01,
+      "texto": "aconsejando."
+    },
+    {
+      "inicio": 604.33,
+      "fin": 604.53,
+      "texto": "No,"
+    },
+    {
+      "inicio": 604.65,
+      "fin": 604.95,
+      "texto": "no"
+    },
+    {
+      "inicio": 604.95,
+      "fin": 605.21,
+      "texto": "seas"
+    },
+    {
+      "inicio": 605.21,
+      "fin": 605.73,
+      "texto": "pendejas."
+    },
+    {
+      "inicio": 606.47,
+      "fin": 606.99,
+      "texto": "Nunca"
+    },
+    {
+      "inicio": 606.99,
+      "fin": 607.07,
+      "texto": "se"
+    },
+    {
+      "inicio": 607.07,
+      "fin": 607.15,
+      "texto": "han"
+    },
+    {
+      "inicio": 607.15,
+      "fin": 607.29,
+      "texto": "puesto"
+    },
+    {
+      "inicio": 607.29,
+      "fin": 607.47,
+      "texto": "a"
+    },
+    {
+      "inicio": 607.47,
+      "fin": 607.85,
+      "texto": "pensar"
+    },
+    {
+      "inicio": 607.85,
+      "fin": 608.11,
+      "texto": "que"
+    },
+    {
+      "inicio": 608.11,
+      "fin": 608.51,
+      "texto": "sería"
+    },
+    {
+      "inicio": 608.51,
+      "fin": 608.95,
+      "texto": "mejor"
+    },
+    {
+      "inicio": 608.95,
+      "fin": 609.69,
+      "texto": "lejos"
+    },
+    {
+      "inicio": 609.69,
+      "fin": 609.83,
+      "texto": "de"
+    },
+    {
+      "inicio": 609.83,
+      "fin": 610.01,
+      "texto": "solo"
+    },
+    {
+      "inicio": 610.01,
+      "fin": 610.33,
+      "texto": "hacer"
+    },
+    {
+      "inicio": 610.33,
+      "fin": 610.63,
+      "texto": "así"
+    },
+    {
+      "inicio": 610.63,
+      "fin": 611.15,
+      "texto": "la"
+    },
+    {
+      "inicio": 611.15,
+      "fin": 611.47,
+      "texto": "bañera"
+    },
+    {
+      "inicio": 611.47,
+      "fin": 611.67,
+      "texto": "aquí"
+    },
+    {
+      "inicio": 611.67,
+      "fin": 611.95,
+      "texto": "arriba"
+    },
+    {
+      "inicio": 611.95,
+      "fin": 612.07,
+      "texto": "de"
+    },
+    {
+      "inicio": 612.07,
+      "fin": 612.15,
+      "texto": "tu"
+    },
+    {
+      "inicio": 612.15,
+      "fin": 612.41,
+      "texto": "cabeza."
+    },
+    {
+      "inicio": 612.41,
+      "fin": 612.77,
+      "texto": "Todo"
+    },
+    {
+      "inicio": 612.77,
+      "fin": 613.59,
+      "texto": "ese"
+    },
+    {
+      "inicio": 613.59,
+      "fin": 614.11,
+      "texto": "techo,"
+    },
+    {
+      "inicio": 614.11,
+      "fin": 614.31,
+      "texto": "todo"
+    },
+    {
+      "inicio": 614.31,
+      "fin": 614.41,
+      "texto": "ese"
+    },
+    {
+      "inicio": 614.41,
+      "fin": 615.01,
+      "texto": "cuartito"
+    },
+    {
+      "inicio": 615.01,
+      "fin": 615.25,
+      "texto": "Toda"
+    },
+    {
+      "inicio": 615.25,
+      "fin": 615.35,
+      "texto": "esa"
+    },
+    {
+      "inicio": 615.35,
+      "fin": 615.69,
+      "texto": "bañera"
+    },
+    {
+      "inicio": 615.69,
+      "fin": 616.09,
+      "texto": "Porque"
+    },
+    {
+      "inicio": 616.09,
+      "fin": 616.43,
+      "texto": "entonces"
+    },
+    {
+      "inicio": 616.43,
+      "fin": 616.67,
+      "texto": "te"
+    },
+    {
+      "inicio": 616.67,
+      "fin": 617.05,
+      "texto": "podrías"
+    },
+    {
+      "inicio": 617.05,
+      "fin": 617.33,
+      "texto": "mover"
+    },
+    {
+      "inicio": 617.33,
+      "fin": 617.67,
+      "texto": "de"
+    },
+    {
+      "inicio": 617.67,
+      "fin": 617.77,
+      "texto": "un"
+    },
+    {
+      "inicio": 617.77,
+      "fin": 617.97,
+      "texto": "lado"
+    },
+    {
+      "inicio": 617.97,
+      "fin": 618.11,
+      "texto": "a"
+    },
+    {
+      "inicio": 618.11,
+      "fin": 618.39,
+      "texto": "otro"
+    },
+    {
+      "inicio": 618.39,
+      "fin": 618.61,
+      "texto": "Pero"
+    },
+    {
+      "inicio": 618.61,
+      "fin": 619.13,
+      "texto": "narralo"
+    },
+    {
+      "inicio": 619.13,
+      "fin": 619.39,
+      "texto": "como"
+    },
+    {
+      "inicio": 619.39,
+      "fin": 619.77,
+      "texto": "video"
+    },
+    {
+      "inicio": 619.77,
+      "fin": 619.95,
+      "texto": "de"
+    },
+    {
+      "inicio": 619.95,
+      "fin": 620.33,
+      "texto": "estos"
+    },
+    {
+      "inicio": 620.33,
+      "fin": 620.85,
+      "texto": "Te"
+    },
+    {
+      "inicio": 620.85,
+      "fin": 621.73,
+      "texto": "metes"
+    },
+    {
+      "inicio": 621.73,
+      "fin": 621.77,
+      "texto": "a"
+    },
+    {
+      "inicio": 621.77,
+      "fin": 621.85,
+      "texto": "la"
+    },
+    {
+      "inicio": 621.85,
+      "fin": 622.17,
+      "texto": "bañera"
+    },
+    {
+      "inicio": 622.17,
+      "fin": 622.25,
+      "texto": "y"
+    },
+    {
+      "inicio": 622.25,
+      "fin": 622.33,
+      "texto": "te"
+    },
+    {
+      "inicio": 622.33,
+      "fin": 622.51,
+      "texto": "das"
+    },
+    {
+      "inicio": 622.51,
+      "fin": 622.75,
+      "texto": "cuenta"
+    },
+    {
+      "inicio": 622.75,
+      "fin": 623.11,
+      "texto": "Que"
+    },
+    {
+      "inicio": 623.11,
+      "fin": 623.31,
+      "texto": "hay"
+    },
+    {
+      "inicio": 623.31,
+      "fin": 623.57,
+      "texto": "agua"
+    },
+    {
+      "inicio": 623.57,
+      "fin": 623.83,
+      "texto": "solo"
+    },
+    {
+      "inicio": 623.83,
+      "fin": 624.41,
+      "texto": "justo"
+    },
+    {
+      "inicio": 624.41,
+      "fin": 624.77,
+      "texto": "arriba"
+    },
+    {
+      "inicio": 624.77,
+      "fin": 624.97,
+      "texto": "de"
+    },
+    {
+      "inicio": 624.97,
+      "fin": 625.07,
+      "texto": "tu"
+    },
+    {
+      "inicio": 625.07,
+      "fin": 625.35,
+      "texto": "cabeza"
+    },
+    {
+      "inicio": 625.35,
+      "fin": 625.77,
+      "texto": "Eso"
+    },
+    {
+      "inicio": 625.77,
+      "fin": 625.89,
+      "texto": "está"
+    },
+    {
+      "inicio": 625.89,
+      "fin": 626.35,
+      "texto": "totalmente"
+    },
+    {
+      "inicio": 626.35,
+      "fin": 627.17,
+      "texto": "obsoleto"
+    },
+    {
+      "inicio": 627.17,
+      "fin": 627.47,
+      "texto": "¿Qué"
+    },
+    {
+      "inicio": 627.47,
+      "fin": 627.55,
+      "texto": "tal"
+    },
+    {
+      "inicio": 627.55,
+      "fin": 627.67,
+      "texto": "si"
+    },
+    {
+      "inicio": 627.67,
+      "fin": 628.01,
+      "texto": "ponemos"
+    },
+    {
+      "inicio": 628.01,
+      "fin": 628.67,
+      "texto": "chorros"
+    },
+    {
+      "inicio": 628.67,
+      "fin": 629.03,
+      "texto": "en"
+    },
+    {
+      "inicio": 629.03,
+      "fin": 629.51,
+      "texto": "toda"
+    },
+    {
+      "inicio": 629.51,
+      "fin": 629.75,
+      "texto": "la"
+    },
+    {
+      "inicio": 629.75,
+      "fin": 630.17,
+      "texto": "bañera?"
+    },
+    {
+      "inicio": 630.29,
+      "fin": 630.37,
+      "texto": "Y"
+    },
+    {
+      "inicio": 630.37,
+      "fin": 630.47,
+      "texto": "en"
+    },
+    {
+      "inicio": 630.47,
+      "fin": 630.59,
+      "texto": "las"
+    },
+    {
+      "inicio": 630.59,
+      "fin": 631.07,
+      "texto": "paredes"
+    },
+    {
+      "inicio": 631.07,
+      "fin": 631.67,
+      "texto": "Incluso"
+    },
+    {
+      "inicio": 631.67,
+      "fin": 632.07,
+      "texto": "una"
+    },
+    {
+      "inicio": 632.07,
+      "fin": 632.29,
+      "texto": "en"
+    },
+    {
+      "inicio": 632.29,
+      "fin": 632.59,
+      "texto": "tu"
+    },
+    {
+      "inicio": 632.59,
+      "fin": 632.81,
+      "texto": "ano"
+    },
+    {
+      "inicio": 632.81,
+      "fin": 633.13,
+      "texto": "Pero"
+    },
+    {
+      "inicio": 633.13,
+      "fin": 633.75,
+      "texto": "tu"
+    },
+    {
+      "inicio": 633.75,
+      "fin": 633.99,
+      "texto": "ano"
+    },
+    {
+      "inicio": 633.99,
+      "fin": 634.17,
+      "texto": "se"
+    },
+    {
+      "inicio": 634.17,
+      "fin": 634.37,
+      "texto": "llena"
+    },
+    {
+      "inicio": 634.37,
+      "fin": 634.55,
+      "texto": "de"
+    },
+    {
+      "inicio": 634.55,
+      "fin": 634.81,
+      "texto": "agua"
+    },
+    {
+      "inicio": 634.81,
+      "fin": 635.17,
+      "texto": "Y"
+    },
+    {
+      "inicio": 635.17,
+      "fin": 635.55,
+      "texto": "te"
+    },
+    {
+      "inicio": 635.55,
+      "fin": 635.69,
+      "texto": "sale"
+    },
+    {
+      "inicio": 635.69,
+      "fin": 635.83,
+      "texto": "por"
+    },
+    {
+      "inicio": 635.83,
+      "fin": 635.93,
+      "texto": "la"
+    },
+    {
+      "inicio": 635.93,
+      "fin": 636.19,
+      "texto": "boca"
+    },
+    {
+      "inicio": 637.95,
+      "fin": 638.47,
+      "texto": "Entonces"
+    },
+    {
+      "inicio": 638.47,
+      "fin": 638.99,
+      "texto": "quitamos"
+    },
+    {
+      "inicio": 638.99,
+      "fin": 639.51,
+      "texto": "el"
+    },
+    {
+      "inicio": 639.51,
+      "fin": 639.89,
+      "texto": "chorro"
+    },
+    {
+      "inicio": 639.89,
+      "fin": 640.01,
+      "texto": "Que"
+    },
+    {
+      "inicio": 640.01,
+      "fin": 640.17,
+      "texto": "está"
+    },
+    {
+      "inicio": 640.17,
+      "fin": 640.33,
+      "texto": "en"
+    },
+    {
+      "inicio": 640.33,
+      "fin": 640.45,
+      "texto": "el"
+    },
+    {
+      "inicio": 640.45,
+      "fin": 640.67,
+      "texto": "ano"
+    },
+    {
+      "inicio": 640.67,
+      "fin": 640.83,
+      "texto": "Y"
+    },
+    {
+      "inicio": 640.83,
+      "fin": 640.97,
+      "texto": "lo"
+    },
+    {
+      "inicio": 640.97,
+      "fin": 641.57,
+      "texto": "ponemos"
+    },
+    {
+      "inicio": 641.57,
+      "fin": 641.75,
+      "texto": "en"
+    },
+    {
+      "inicio": 641.75,
+      "fin": 641.85,
+      "texto": "la"
+    },
+    {
+      "inicio": 641.85,
+      "fin": 642.05,
+      "texto": "boca"
+    },
+    {
+      "inicio": 642.05,
+      "fin": 642.35,
+      "texto": "Y"
+    },
+    {
+      "inicio": 642.35,
+      "fin": 642.45,
+      "texto": "te"
+    },
+    {
+      "inicio": 642.45,
+      "fin": 642.77,
+      "texto": "sale"
+    },
+    {
+      "inicio": 642.77,
+      "fin": 642.91,
+      "texto": "por"
+    },
+    {
+      "inicio": 642.91,
+      "fin": 643.07,
+      "texto": "el"
+    },
+    {
+      "inicio": 643.07,
+      "fin": 643.27,
+      "texto": "lado"
+    },
+    {
+      "inicio": 643.27,
+      "fin": 643.71,
+      "texto": "Pero"
+    },
+    {
+      "inicio": 643.71,
+      "fin": 645.03,
+      "texto": "ven"
+    },
+    {
+      "inicio": 645.03,
+      "fin": 645.31,
+      "texto": "Yo"
+    },
+    {
+      "inicio": 645.31,
+      "fin": 645.43,
+      "texto": "es"
+    },
+    {
+      "inicio": 645.62,
+      "fin": 645.64,
+      "texto": "que"
+    },
+    {
+      "inicio": 645.64,
+      "fin": 645.76,
+      "texto": "es"
+    },
+    {
+      "inicio": 645.76,
+      "fin": 645.92,
+      "texto": "buen"
+    },
+    {
+      "inicio": 645.92,
+      "fin": 646.4,
+      "texto": "invento"
+    },
+    {
+      "inicio": 646.4,
+      "fin": 646.6,
+      "texto": "Sería"
+    },
+    {
+      "inicio": 646.6,
+      "fin": 646.7,
+      "texto": "buen"
+    },
+    {
+      "inicio": 646.7,
+      "fin": 647.08,
+      "texto": "invento"
+    },
+    {
+      "inicio": 647.08,
+      "fin": 647.32,
+      "texto": "Llenar"
+    },
+    {
+      "inicio": 647.32,
+      "fin": 647.48,
+      "texto": "así"
+    },
+    {
+      "inicio": 647.48,
+      "fin": 647.68,
+      "texto": "toda"
+    },
+    {
+      "inicio": 647.68,
+      "fin": 647.82,
+      "texto": "la"
+    },
+    {
+      "inicio": 647.82,
+      "fin": 648.1,
+      "texto": "ducha"
+    },
+    {
+      "inicio": 648.1,
+      "fin": 648.18,
+      "texto": "de"
+    },
+    {
+      "inicio": 648.18,
+      "fin": 648.38,
+      "texto": "agua"
+    },
+    {
+      "inicio": 648.38,
+      "fin": 648.62,
+      "texto": "Si"
+    },
+    {
+      "inicio": 648.62,
+      "fin": 648.88,
+      "texto": "usas"
+    },
+    {
+      "inicio": 648.88,
+      "fin": 649.28,
+      "texto": "hisopos"
+    },
+    {
+      "inicio": 649.28,
+      "fin": 649.32,
+      "texto": "de"
+    },
+    {
+      "inicio": 649.32,
+      "fin": 649.66,
+      "texto": "algodón"
+    },
+    {
+      "inicio": 649.66,
+      "fin": 649.76,
+      "texto": "Para"
+    },
+    {
+      "inicio": 649.76,
+      "fin": 650.14,
+      "texto": "limpiar"
+    },
+    {
+      "inicio": 650.14,
+      "fin": 650.28,
+      "texto": "tus"
+    },
+    {
+      "inicio": 650.28,
+      "fin": 650.64,
+      "texto": "oídos"
+    },
+    {
+      "inicio": 650.64,
+      "fin": 650.88,
+      "texto": "Ten"
+    },
+    {
+      "inicio": 650.88,
+      "fin": 651.14,
+      "texto": "cuidado"
+    }
+  ]
+}
