@@ -1,5 +1,6 @@
 import os
 import re
+import textwrap
 
 ESTILO_DEFECTO = {
     "fuente": "Arial",             # nombre de una fuente instalada (se ignora si das "archivo_fuente")
@@ -13,7 +14,22 @@ ESTILO_DEFECTO = {
     "mayusculas": True,
     "resaltar": True,              # False = todo el grupo del mismo color
     "max_palabras": 4,
-    "posicion": 27,                # distancia desde abajo, en % de la altura (en vertical, evita la interfaz de la app)
+    "posicion": 27,                # distancia desde abajo, en % de la altura
+}
+
+TITULO_DEFECTO = {
+    "texto": "",
+    "fuente": None,                # None = la misma que los subtítulos
+    "archivo_fuente": None,
+    "tamano": 64,
+    "color_texto": "#FFFFFF",
+    "color_borde": "#000000",
+    "grosor_borde": 6,
+    "negrita": True,
+    "mayusculas": False,
+    "posicion": 16,                # distancia desde ARRIBA, en % de la altura
+    "duracion": None,              # None = todo el clip; o segundos desde el inicio
+    "max_lineas": 3,
 }
 
 _PRESETS_TAMANO = {"pequeno": 48, "mediano": 56, "grande": 72}
@@ -72,18 +88,32 @@ def _agrupar(palabras, max_palabras=4, max_chars=20, pausa=0.6):
     return grupos
 
 
-def crear_ass(palabras, ruta_ass, ancho, alto, estilo=None):
-    """Crea subtítulos .ass estilo TikTok. 'estilo' pisa los valores de ESTILO_DEFECTO.
-    Devuelve True si había algo que subtitular."""
+def _lineas_titulo(texto, max_chars, max_lineas):
+    """Parte el título en líneas; si no cabe, lo recorta con puntos suspensivos."""
+    texto = " ".join(str(texto).split()).replace("{", "(").replace("}", ")").replace("\\", "")
+    lineas = textwrap.wrap(texto, width=max_chars) or [texto]
+    if len(lineas) > max_lineas:
+        lineas = lineas[:max_lineas]
+        lineas[-1] = lineas[-1].rstrip(" .,;:") + "…"
+    return lineas
+
+
+def crear_ass(palabras, ruta_ass, ancho, alto, estilo=None, titulo=None, duracion_clip=None):
+    """Crea un .ass con subtítulos estilo TikTok y/o un título fijo.
+    'estilo' pisa ESTILO_DEFECTO y 'titulo' pisa TITULO_DEFECTO.
+    Devuelve True si había algo que mostrar."""
     e = {**ESTILO_DEFECTO, **(estilo or {})}
+    t = {**TITULO_DEFECTO, **titulo} if titulo else None
+    if t and not str(t.get("texto") or "").strip():
+        t = None
 
     limpias = []
-    for p in palabras:
+    for p in palabras or []:
         texto = _limpiar(p["texto"], e["mayusculas"])
         if texto:
             limpias.append({"inicio": p["inicio"], "fin": p["fin"], "texto": texto,
                             "texto_original": p["texto"].strip()})
-    if not limpias:
+    if not limpias and not t:
         return False
 
     fuente = nombre_de_fuente(e["archivo_fuente"]) if e["archivo_fuente"] else e["fuente"]
@@ -102,8 +132,8 @@ def crear_ass(palabras, ruta_ass, ancho, alto, estilo=None):
     c_resalte = _bgr(e["color_resaltado"], ESTILO_DEFECTO["color_resaltado"])
     c_borde = _bgr(e["color_borde"], ESTILO_DEFECTO["color_borde"])
 
+    eventos = []
     grupos = _agrupar(limpias, max_palabras=int(e["max_palabras"]), max_chars=max_chars)
-    lineas = []
     for g_idx, grupo in enumerate(grupos):
         siguiente = grupos[g_idx + 1][0]["inicio"] if g_idx + 1 < len(grupos) else None
 
@@ -113,7 +143,7 @@ def crear_ass(palabras, ruta_ass, ancho, alto, estilo=None):
             if siguiente is not None:
                 fin = min(fin, siguiente)
             texto = " ".join(w["texto"] for w in grupo)
-            lineas.append(f"Dialogue: 0,{_t(inicio)},{_t(max(fin, inicio + 0.1))},Default,,0,0,0,,{texto}")
+            eventos.append(f"Dialogue: 0,{_t(inicio)},{_t(max(fin, inicio + 0.1))},Default,,0,0,0,,{texto}")
             continue
 
         for i, palabra in enumerate(grupo):
@@ -129,9 +159,41 @@ def crear_ass(palabras, ruta_ass, ancho, alto, estilo=None):
                 (f"{{\\c&H{c_resalte}&}}{w['texto']}{{\\c&H{c_texto}&}}" if j == i else w["texto"])
                 for j, w in enumerate(grupo)
             )
-            lineas.append(f"Dialogue: 0,{_t(inicio)},{_t(fin)},Default,,0,0,0,,{texto}")
+            eventos.append(f"Dialogue: 0,{_t(inicio)},{_t(fin)},Default,,0,0,0,,{texto}")
 
     negrita = -1 if e["negrita"] else 0
+    estilos = [
+        f"Style: Default,{fuente},{tam},&H00{c_texto},&H00{c_texto},&H00{c_borde},&H80000000,"
+        f"{negrita},0,0,0,100,100,0,0,1,{borde},0,2,{margen_h},{margen_h},{margen_v},1"
+    ]
+
+    if t:
+        fuente_t = nombre_de_fuente(t["archivo_fuente"]) if t["archivo_fuente"] else (t["fuente"] or fuente)
+        tam_t = max(20, int(t["tamano"] * base / 1080))
+        borde_t = max(0, int(t["grosor_borde"] * base / 1080))
+        margen_v_t = int(alto * t["posicion"] / 100)
+        max_chars_t = int(max(10, min(32, (ancho * 0.86) / (tam_t * 0.58))))
+        c_texto_t = _bgr(t["color_texto"], TITULO_DEFECTO["color_texto"])
+        c_borde_t = _bgr(t["color_borde"], TITULO_DEFECTO["color_borde"])
+        negrita_t = -1 if t["negrita"] else 0
+
+        texto_t = str(t["texto"]).upper() if t["mayusculas"] else str(t["texto"])
+        texto_t = "\\N".join(_lineas_titulo(texto_t, max_chars_t, int(t["max_lineas"])))
+
+        fin_t = float(duracion_clip) if duracion_clip else 3600.0
+        if t["duracion"]:
+            fin_t = min(fin_t, float(t["duracion"]))
+            efecto = "{\\fad(250,250)}"
+        else:
+            efecto = "{\\fad(250,0)}"
+
+        estilos.append(
+            f"Style: Titulo,{fuente_t},{tam_t},&H00{c_texto_t},&H00{c_texto_t},&H00{c_borde_t},&H80000000,"
+            f"{negrita_t},0,0,0,100,100,0,0,1,{borde_t},0,8,{margen_h},{margen_h},{margen_v_t},1"
+        )
+        eventos.append(f"Dialogue: 1,{_t(0)},{_t(fin_t)},Titulo,,0,0,0,,{efecto}{texto_t}")
+
+    estilos_txt = "\n".join(estilos)
     cabecera = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {ancho}
@@ -141,11 +203,11 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Default,{fuente},{tam},&H00{c_texto},&H00{c_texto},&H00{c_borde},&H80000000,{negrita},0,0,0,100,100,0,0,1,{borde},0,2,{margen_h},{margen_h},{margen_v},1
+{estilos_txt}
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
     with open(ruta_ass, "w", encoding="utf-8") as f:
-        f.write(cabecera + "\n".join(lineas) + "\n")
+        f.write(cabecera + "\n".join(eventos) + "\n")
     return True

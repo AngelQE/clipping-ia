@@ -59,42 +59,129 @@ PERFILES = {
             '"puntaje": 9, "incluye_contenido_original": true, "incluye_reaccion": true}]}'
         ),
     },
-    "podcast": {
-        "descripcion": "Conversación o entrevista entre dos o más personas.",
+        "podcast": {
+        "descripcion": (
+            "Programa de conversación en audio o video, por episodios: entrevista (un anfitrión con uno o más "
+            "invitados), conversación entre co-anfitriones, mesa redonda o panel, o monólogo de un solo anfitrión."
+        ),
         "duracion": (30, 90),
         "exigir": [],
         "reglas": (
-            "- Estructura ideal: PROVOCACIÓN o pregunta -> respuesta, anécdota u opinión fuerte -> "
-            "REMATE (frase memorable, chiste o conclusión).\n"
-            "- Elige anécdotas con inicio, nudo y desenlace, opiniones polémicas, confesiones, datos "
-            "sorprendentes, desacuerdos entre los participantes y momentos graciosos.\n"
-            "- Incluye la pregunta o el contexto mínimo que provoca el momento. Evita lo que depende de "
-            "algo dicho antes (\"como te decía\", \"eso que mencionamos\").\n"
-            "- Evita presentaciones, publicidad, charla de relleno y despedidas."
+            "- Según el formato, lo que más se presta a un clip: en una entrevista, la respuesta o anécdota del "
+            "invitado; en una conversación o un panel, el intercambio con más chispa o un desacuerdo; en un "
+            "monólogo, una idea completa con una opinión fuerte.\n"
+            "- Estructura ideal: PREGUNTA o provocación -> respuesta, anécdota u opinión fuerte -> REMATE "
+            "(frase memorable, chiste o conclusión).\n"
+            "- Incluye la pregunta o el contexto mínimo que provoca el momento. Evita lo que depende de algo "
+            "dicho antes (\"como te decía\", \"eso que mencionamos\").\n"
+            "- Prefiere anécdotas con inicio, nudo y desenlace, opiniones polémicas, confesiones, datos "
+            "sorprendentes y desacuerdos entre los participantes.\n"
+            "- Evita presentaciones, publicidad, saludos, despedidas y charla de relleno."
         ),
     },
     "stream": {
-        "descripcion": "Transmisión en vivo de un streamer (juegos, chat, anécdotas).",
+        "descripcion": (
+            "Transmisión en vivo de un streamer (juegos, 'Just Chatting' o eventos), con chat, donaciones y "
+            "suscripciones en directo y sin edición posterior."
+        ),
         "duracion": (20, 60),
         "exigir": [],
         "reglas": (
-            "- Busca picos de emoción: gritos, risas, sustos, jugadas épicas, fallos graciosos, "
-            "reacciones a donaciones o al chat.\n"
+            "- En un directo no hay edición: hay mucho tiempo muerto, y los buenos momentos son picos de "
+            "emoción: gritos, risas, sustos, jugadas épicas, fallos graciosos, frustración exagerada.\n"
+            "- También sirven los momentos de interacción: el streamer responde al chat o reacciona con gracia "
+            "a una donación o una suscripción.\n"
             "- Estructura ideal: PREPARACIÓN (qué intenta hacer o qué pasa) -> MOMENTO CLAVE -> REACCIÓN del streamer.\n"
-            "- Que se entienda qué ocurrió sin ver la pantalla: si el streamer no lo explica, el momento es débil.\n"
-            "- Evita tiempos muertos, pantallas de carga, lectura del chat sin gracia, silencios y charla técnica."
+            "- Que se entienda qué ocurrió sin ver la pantalla: si el streamer no lo explica con palabras, el "
+            "momento es débil.\n"
+            "- Evita tiempos muertos, pantallas de carga, lectura de chat o de alertas sin gracia, silencios y "
+            "charla técnica."
         ),
     },
     "tutorial": {
-        "descripcion": "Explicación o clase donde alguien enseña algo.",
+        "descripcion": "Explicación o clase donde alguien enseña a hacer algo, con pasos o instrucciones.",
         "duracion": (30, 90),
         "exigir": [],
         "reglas": (
-            "- Elige UN solo consejo, truco o idea que se entienda completo por sí solo.\n"
-            "- Estructura ideal: PROBLEMA o pregunta (\"¿cómo...?\", \"el error más común es...\") -> "
-            "EXPLICACIÓN en pocos pasos -> RESULTADO o conclusión.\n"
+            "- Un clip de tutorial enseña UNA sola cosa completa: un consejo, un truco o un paso con su porqué. "
+            "No una lista de pasos.\n"
+            "- Estructura ideal: PROBLEMA o pregunta (\"¿cómo...?\", \"el error más común es...\") -> EXPLICACIÓN "
+            "en pocos pasos, diciendo para qué sirve cada uno -> RESULTADO o conclusión.\n"
             "- Prefiere explicaciones con un dato concreto, un ejemplo o un antes y después.\n"
-            "- Evita introducciones, \"antes de empezar\", pedir suscripciones y pasos a medias."
+            "- Evita introducciones, \"antes de empezar\", requisitos previos, pedir suscripciones y pasos a medias."
+        ),
+    },
+    "gameplay": {
+        "descripcion": (
+            "Partida de un videojuego grabada con comentarios del jugador (estilo Let's Play): su experiencia "
+            "subjetiva, con humor, ironía o crítica, más que una guía objetiva. Puede incluir su cámara."
+        ),
+        "duracion": (20, 60),
+        "exigir": [],
+        "reglas": (
+            "- Lo valioso es la experiencia y la personalidad del jugador, no la guía del juego: busca humor, "
+            "ironía, críticas, frustración, sorpresa y comentarios ingeniosos.\n"
+            "- Estructura ideal: PREPARACIÓN (el objetivo o el reto que enfrenta) -> MOMENTO CLAVE (victoria, "
+            "derrota, fallo, susto, jugada increíble o giro) -> REACCIÓN del jugador.\n"
+            "- El clip debe entenderse sin conocer el juego: el jugador debe decir o dejar claro qué pasa.\n"
+            "- La transcripción no recoge la acción en silencio: si el jugador calla, el momento puede perderse. "
+            "Fíate de las exclamaciones y de los comentarios.\n"
+            "- Evita silencios largos, explicaciones de menús o configuración, repeticiones del mismo intento "
+            "sin gracia y charla técnica sobre el juego."
+        ),
+    },
+    "comedia": {
+        "descripcion": (
+            "Comedia en vivo (stand-up) o monólogo humorístico donde el comediante se dirige directo al público "
+            "con chistes, 'bits' y anécdotas."
+        ),
+        "duracion": (30, 90),
+        "exigir": [],
+        "reglas": (
+            "- Un chiste se compone de planteamiento (premisa y preparación) y remate (la sorpresa que rompe lo "
+            "esperado), a veces con una extensión que añade otra risa. El clip DEBE incluir el planteamiento "
+            "completo y el remate: nunca solo el remate.\n"
+            "- Un 'bit' son varios chistes ligados sobre un mismo tema: elige el bit entero si cabe, y que el "
+            "clip termine en su mayor remate.\n"
+            "- Un 'callback' es una referencia a un chiste anterior: úsalo solo si el clip incluye el chiste "
+            "original o se entiende por sí solo.\n"
+            "- Las pausas son parte del timing: no cortes justo antes del remate ni justo después de la pausa.\n"
+            "- También sirven las anécdotas graciosas con exageración que tienen inicio, giro y final.\n"
+            "- Evita presentaciones del comediante, interacción con el público sin gracia y chistes que dependen "
+            "de otros anteriores."
+        ),
+    },
+    "discurso": {
+        "descripcion": (
+            "Discurso, charla o conferencia pensada para motivar o inspirar a la audiencia, normalmente con "
+            "historias personales, enseñanzas y una invitación a actuar."
+        ),
+        "duracion": (30, 90),
+        "exigir": [],
+        "reglas": (
+            "- Estructura ideal: HISTORIA o situación -> ENSEÑANZA o idea central -> FRASE memorable o llamado "
+            "a la acción.\n"
+            "- Las historias en primera persona son el corazón del discurso: prefiere las que se entienden completas.\n"
+            "- Un buen clip da algo concreto que hacer o pensar, no solo emoción: una idea clara, una frase "
+            "citable o un cambio de perspectiva.\n"
+            "- Evita agradecimientos, presentaciones del orador, chistes internos del evento y partes que "
+            "dependen de lo dicho antes."
+        ),
+    },
+    "storytime": {
+        "descripcion": (
+            "Alguien cuenta una historia propia o ajena (anécdota, 'storytime' o relato) con inicio, "
+            "desarrollo y final."
+        ),
+        "duracion": (45, 120),
+        "exigir": [],
+        "reglas": (
+            "- Estructura de una historia: INTRODUCCIÓN (contexto y personajes) -> tensión creciente con "
+            "complicaciones -> CLÍMAX (el giro o el punto de mayor tensión, que puede ser una revelación o una "
+            "decisión y no solo acción) -> desenlace.\n"
+            "- El clip debe llegar al clímax y, de preferencia, al desenlace. Nunca termines antes del giro.\n"
+            "- Empieza en el gancho: una frase que genere curiosidad, aunque haya que recortar contexto largo.\n"
+            "- Evita historias que se cortan a la mitad, digresiones largas y aclaraciones que rompen el ritmo."
         ),
     },
 }

@@ -11,3 +11,7 @@ mostrar_palabras(RUTA)     # las palabras con * están dentro del clip
 
 # Cambiar el estilo de los subtítulos:
 # regenerar_clip(RUTA, estilo_sub={"tamano": 36, "color_resaltado": "#00FF00"})
+
+# Cambiar el Título en una clip que ya existe:
+# regenerar_clip(RUTA, titulo_en_video="Rubius reacciona al GTA VI")
+# regenerar_clip(RUTA, titulo_en_video=False)   # quitarlo

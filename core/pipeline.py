@@ -49,7 +49,8 @@ def _contexto_con_idioma(contexto, idioma):
 
 def procesar_video(ruta_video, tipo="auto", contexto="", formato="borroso", duracion=None,
                    max_clips=5, motor="unidades", relleno_antes=2.5, relleno_despues=2.5,
-                   subtitulos=True, idioma=None, forzar=False, estilo_sub=None):
+                   subtitulos=True, idioma=None, forzar=False, estilo_sub=None,
+                   titulo_en_video=None):
     """Proceso completo para UN video. idioma=None lo detecta; forzar=True ignora la caché."""
     segmentos, idioma = _transcribir_con_cache(ruta_video, idioma, forzar)
     if not segmentos:
@@ -67,7 +68,7 @@ def procesar_video(ruta_video, tipo="auto", contexto="", formato="borroso", dura
                                 contexto=contexto, duracion=duracion)
     liberar_ollama()
     archivos = cortar_clips(ruta_video, clips, formato=formato, subtitulos=subtitulos,
-                            idioma=idioma, estilo_sub=estilo_sub)
+                            idioma=idioma, estilo_sub=estilo_sub, titulo_en_video=titulo_en_video)
     if subtitulos:
         liberar_modelo()
     return archivos
@@ -75,14 +76,18 @@ def procesar_video(ruta_video, tipo="auto", contexto="", formato="borroso", dura
 
 def modo_manual(ruta_video, tipo="auto", contexto="", formato="borroso", duracion=None,
                 max_clips=5, motor="unidades", relleno_antes=2.5, relleno_despues=2.5,
-                subtitulos=True, idioma=None, forzar=False, estilo_sub=None):
+                subtitulos=True, idioma=None, forzar=False, estilo_sub=None,
+                titulo_en_video=None):
     """Tú das el video y la IA elige los momentos."""
     return procesar_video(ruta_video, tipo, contexto, formato, duracion, max_clips, motor,
-                          relleno_antes, relleno_despues, subtitulos, idioma, forzar, estilo_sub)
+                          relleno_antes, relleno_despues, subtitulos, idioma, forzar,
+                          estilo_sub, titulo_en_video)
 
 
-def modo_rango(ruta_video, rangos, formato="borroso", subtitulos=True, idioma=None, estilo_sub=None):
-    """Tú eliges los minutos exactos. rangos = [("05:12", "06:00"), ...]"""
+def modo_rango(ruta_video, rangos, formato="borroso", subtitulos=True, idioma=None,
+               estilo_sub=None, titulo_en_video=None):
+    """Tú eliges los minutos exactos. rangos = [("05:12", "06:00"), ...]
+    Aquí titulo_en_video=True no tiene un título generado: usa un texto propio."""
     clips = []
     for i, (inicio, fin) in enumerate(rangos, 1):
         inicio, fin = a_segundos(inicio), a_segundos(fin)
@@ -91,7 +96,7 @@ def modo_rango(ruta_video, rangos, formato="borroso", subtitulos=True, idioma=No
             continue
         clips.append({"inicio": inicio, "fin": fin, "titulo": f"manual_{i}"})
     archivos = cortar_clips(ruta_video, clips, formato=formato, subtitulos=subtitulos,
-                            idioma=idioma, estilo_sub=estilo_sub)
+                            idioma=idioma, estilo_sub=estilo_sub, titulo_en_video=titulo_en_video)
     if subtitulos:
         liberar_modelo()
     return archivos

@@ -17,6 +17,8 @@ FILTROS = {
     ),
 }
 
+_SIN_CAMBIO = object()
+
 
 def formatear_tiempo(segundos):
     s = int(segundos)
@@ -42,6 +44,23 @@ def _normalizar(texto):
     return re.sub(r"[^\w]", "", texto.lower())
 
 
+def _config_titulo(valor, texto_generado):
+    """None/False -> sin título | True -> el título generado | 'texto' -> ese texto |
+    dict -> estilo (con 'texto' opcional)."""
+    if not valor:
+        return None
+    generado = "" if str(texto_generado).startswith("manual_") else texto_generado
+    if valor is True:
+        return {"texto": generado}
+    if isinstance(valor, str):
+        return {"texto": valor}
+    if isinstance(valor, dict):
+        cfg = dict(valor)
+        cfg.setdefault("texto", generado)
+        return cfg
+    return None
+
+
 def _resolucion_salida(ruta_video, formato):
     """Tamaño del video final, para dimensionar los subtítulos."""
     if formato in ("recorte", "borroso"):
@@ -58,15 +77,17 @@ def _resolucion_salida(ruta_video, formato):
         return 1920, 1080
 
 
-def _preparar_fuentes(estilo_sub):
-    """Si hay una fuente propia, la copia a la carpeta 'fuentes' y devuelve esa carpeta."""
-    archivo = (estilo_sub or {}).get("archivo_fuente")
-    if not archivo:
+def _preparar_fuentes(estilo_sub, titulo):
+    """Copia las fuentes propias a la carpeta 'fuentes' y devuelve esa carpeta (o None)."""
+    archivos = [a for a in ((estilo_sub or {}).get("archivo_fuente"),
+                            (titulo or {}).get("archivo_fuente")) if a]
+    if not archivos:
         return None
     os.makedirs("fuentes", exist_ok=True)
-    destino = os.path.join("fuentes", os.path.basename(archivo))
-    if os.path.abspath(archivo) != os.path.abspath(destino) and not os.path.exists(destino):
-        shutil.copy2(archivo, destino)
+    for archivo in archivos:
+        destino = os.path.join("fuentes", os.path.basename(archivo))
+        if os.path.abspath(archivo) != os.path.abspath(destino) and not os.path.exists(destino):
+            shutil.copy2(archivo, destino)
     return "fuentes"
 
 
@@ -84,16 +105,17 @@ def _palabras_del_tramo(palabras_abs, inicio, fin):
     return salida
 
 
-def _renderizar(ruta_video, inicio, fin, destino, formato, palabras=None, estilo_sub=None, n=0):
-    """Corta un clip con ffmpeg, con subtítulos quemados si hay palabras (tiempos relativos al clip)."""
+def _renderizar(ruta_video, inicio, fin, destino, formato, palabras=None, estilo_sub=None,
+                n=0, titulo=None):
+    """Corta un clip con ffmpeg, con subtítulos y/o título quemados (tiempos de las palabras relativos al clip)."""
     vf = FILTROS.get(formato)
-    if palabras:
+    if palabras or titulo:
         os.makedirs("cache/subs", exist_ok=True)
         ancho, alto = _resolucion_salida(ruta_video, formato)
         ruta_ass = f"cache/subs/sub_{n:02d}.ass"   # ruta relativa con "/" para que ffmpeg no se confunda en Windows
-        if crear_ass(palabras, ruta_ass, ancho, alto, estilo_sub):
+        if crear_ass(palabras or [], ruta_ass, ancho, alto, estilo_sub, titulo, fin - inicio):
             filtro_ass = f"ass={ruta_ass}"
-            carpeta_fuentes = _preparar_fuentes(estilo_sub)
+            carpeta_fuentes = _preparar_fuentes(estilo_sub, titulo)
             if carpeta_fuentes:
                 filtro_ass += f":fontsdir={carpeta_fuentes}"
             vf = f"{vf},{filtro_ass}" if vf else filtro_ass
@@ -131,10 +153,11 @@ def _guardar_datos(ruta_json, datos):
 
 
 def cortar_clips(ruta_video, clips, carpeta_salida="salida", formato="borroso",
-                 subtitulos=False, idioma=None, estilo_sub=None, margen=6.0):
+                 subtitulos=False, idioma=None, estilo_sub=None, margen=6.0,
+                 titulo_en_video=None):
     """Corta cada clip. formato: original | recorte | borroso.
-    margen: segundos de ventana de seguridad antes y después de cada clip. Se transcriben sus palabras
-    una sola vez, para poder mover el inicio o el final después sin volver a transcribir."""
+    margen: segundos de ventana de seguridad antes y después de cada clip (se transcriben una sola vez).
+    titulo_en_video: None | True (título generado) | "texto" | {estilo...}"""
     os.makedirs(carpeta_salida, exist_ok=True)
     if subtitulos:
         from core.transcripcion import transcribir_palabras  # import tardío: carga Whisper solo si hace falta
@@ -143,6 +166,7 @@ def cortar_clips(ruta_video, clips, carpeta_salida="salida", formato="borroso",
     for i, c in enumerate(clips, 1):
         destino = os.path.join(carpeta_salida, f"{i:02d}_{_nombre_seguro(c['titulo'])}.mp4")
         palabras_abs, ventana, palabras_clip = [], None, None
+        titulo_cfg = _config_titulo(titulo_en_video, c["titulo"])
 
         if subtitulos:
             v_ini = max(0.0, c["inicio"] - margen)
@@ -156,7 +180,8 @@ def cortar_clips(ruta_video, clips, carpeta_salida="salida", formato="borroso",
             palabras_clip = _palabras_del_tramo(palabras_abs, c["inicio"], c["fin"])
             _informe_cobertura(i, palabras_clip, c["fin"] - c["inicio"])
 
-        if not _renderizar(ruta_video, c["inicio"], c["fin"], destino, formato, palabras_clip, estilo_sub, i):
+        if not _renderizar(ruta_video, c["inicio"], c["fin"], destino, formato,
+                           palabras_clip, estilo_sub, i, titulo_cfg):
             continue
 
         _guardar_datos(os.path.splitext(destino)[0] + ".json", {
@@ -166,6 +191,7 @@ def cortar_clips(ruta_video, clips, carpeta_salida="salida", formato="borroso",
             "fin": round(c["fin"], 3),
             "ventana": ventana,              # rango con palabras disponibles (tiempos del video original)
             "titulo": c["titulo"],
+            "titulo_video": titulo_cfg,      # título que se muestra dentro del video (o None)
             "razon": c.get("razon", ""),
             "puntaje": c.get("puntaje"),
             "formato": formato,
@@ -186,14 +212,15 @@ def mostrar_palabras(ruta_json):
         print(f"{i:4d} {dentro} {p['inicio']:8.2f}s  {p['texto']}")
 
 
-def regenerar_clip(ruta_json, correcciones=None, estilo_sub=None,
-                   inicio=None, fin=None, mover_inicio=0.0, mover_fin=0.0):
+def regenerar_clip(ruta_json, correcciones=None, estilo_sub=None, inicio=None, fin=None,
+                   mover_inicio=0.0, mover_fin=0.0, titulo_en_video=_SIN_CAMBIO):
     """Vuelve a crear un clip desde el video original, sin transcribir de nuevo.
     correcciones: {12: "palabra correcta"} (por número) o {"palabra mala": "palabra buena"}.
     estilo_sub: solo lo que quieras cambiar, por ejemplo {"tamano": 48}.
+    titulo_en_video: "texto nuevo", True (el generado), {estilo...} o False (quitarlo).
     Tiempos: inicio/fin (segundos del video original) o mover_inicio/mover_fin.
       mover_inicio=-1.5 empieza 1.5 s antes; mover_fin=+2 termina 2 s después.
-    Solo se puede mover dentro de la ventana de seguridad del clip."""
+    Con subtítulos solo se puede mover dentro de la ventana de seguridad del clip."""
     with open(ruta_json, encoding="utf-8") as f:
         datos = json.load(f)
     if "ventana" not in datos:
@@ -213,6 +240,8 @@ def regenerar_clip(ruta_json, correcciones=None, estilo_sub=None,
 
     if estilo_sub:
         datos["estilo_sub"] = {**datos.get("estilo_sub", {}), **estilo_sub}
+    if titulo_en_video is not _SIN_CAMBIO:
+        datos["titulo_video"] = _config_titulo(titulo_en_video, datos["titulo"])
 
     nuevo_inicio = inicio if inicio is not None else datos["inicio"] + mover_inicio
     nuevo_fin = fin if fin is not None else datos["fin"] + mover_fin
@@ -228,7 +257,7 @@ def regenerar_clip(ruta_json, correcciones=None, estilo_sub=None,
 
     palabras_clip = _palabras_del_tramo(palabras, nuevo_inicio, nuevo_fin) if palabras else None
     ok = _renderizar(datos["video"], nuevo_inicio, nuevo_fin, datos["archivo"], datos["formato"],
-                     palabras_clip, datos.get("estilo_sub"), n=0)
+                     palabras_clip, datos.get("estilo_sub"), n=0, titulo=datos.get("titulo_video"))
     if ok:
         datos["inicio"], datos["fin"], datos["palabras"] = round(nuevo_inicio, 3), round(nuevo_fin, 3), palabras
         _guardar_datos(ruta_json, datos)
