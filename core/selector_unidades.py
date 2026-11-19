@@ -137,7 +137,7 @@ def elegir_momentos_por_unidades(segmentos, max_clips=5, tipo="auto", contexto="
 
             candidatos.append({
                 "inicio": inicio, "fin": fin, "titulo": titulo, "razon": razon,
-                "puntaje": puntaje, "corto": duracion_final < d_min,
+                "puntaje": puntaje, "corto": duracion_final < d_min, "tipo": tipo,
             })
 
     # Mejores primero, sin solapes

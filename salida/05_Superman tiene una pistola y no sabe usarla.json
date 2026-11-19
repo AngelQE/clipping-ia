@@ -1,0 +1,619 @@
+{
+  "archivo": "salida\\05_Superman tiene una pistola y no sabe usarla.mp4",
+  "video": "C:\\Proyectos\\clipping-ia\\videos\\Gm5BJ07acMI.mp4",
+  "inicio": 793.94,
+  "fin": 824.63,
+  "ventana": [
+    787.94,
+    830.63
+  ],
+  "titulo": "Superman tiene una pistola y no sabe usarla",
+  "titulo_video": null,
+  "razon": "El creador reacciona a una escena absurda donde Superman, en lugar de usar sus poderes, intenta apagar un incendio con una pistola. La reacción es de burla y sorpresa, destacando la falta de lógica en la narración.",
+  "puntaje": 8.0,
+  "formato": "borroso",
+  "idioma": "es",
+  "estilo_sub": {},
+  "palabras": [
+    {
+      "inicio": 787.94,
+      "fin": 788.68,
+      "texto": "Ciudadano"
+    },
+    {
+      "inicio": 788.68,
+      "fin": 789.3,
+      "texto": "promedio"
+    },
+    {
+      "inicio": 789.3,
+      "fin": 789.82,
+      "texto": "Ya"
+    },
+    {
+      "inicio": 789.82,
+      "fin": 790.32,
+      "texto": "pagaron"
+    },
+    {
+      "inicio": 790.32,
+      "fin": 790.46,
+      "texto": "sus"
+    },
+    {
+      "inicio": 790.46,
+      "fin": 790.94,
+      "texto": "impuestos"
+    },
+    {
+      "inicio": 790.94,
+      "fin": 791.72,
+      "texto": "Llegó"
+    },
+    {
+      "inicio": 791.72,
+      "fin": 792.14,
+      "texto": "Superman"
+    },
+    {
+      "inicio": 793.14,
+      "fin": 793.54,
+      "texto": "Señora,"
+    },
+    {
+      "inicio": 793.54,
+      "fin": 793.94,
+      "texto": "parece"
+    },
+    {
+      "inicio": 793.94,
+      "fin": 794.18,
+      "texto": "que"
+    },
+    {
+      "inicio": 794.18,
+      "fin": 794.22,
+      "texto": "a"
+    },
+    {
+      "inicio": 794.22,
+      "fin": 794.36,
+      "texto": "usted"
+    },
+    {
+      "inicio": 794.36,
+      "fin": 794.52,
+      "texto": "le"
+    },
+    {
+      "inicio": 794.52,
+      "fin": 794.8,
+      "texto": "dieron"
+    },
+    {
+      "inicio": 794.8,
+      "fin": 794.96,
+      "texto": "el"
+    },
+    {
+      "inicio": 794.96,
+      "fin": 795.22,
+      "texto": "chile"
+    },
+    {
+      "inicio": 795.22,
+      "fin": 795.34,
+      "texto": "más"
+    },
+    {
+      "inicio": 795.34,
+      "fin": 795.72,
+      "texto": "picante"
+    },
+    {
+      "inicio": 795.72,
+      "fin": 795.92,
+      "texto": "El"
+    },
+    {
+      "inicio": 795.92,
+      "fin": 796.36,
+      "texto": "habanero"
+    },
+    {
+      "inicio": 796.36,
+      "fin": 796.74,
+      "texto": "What"
+    },
+    {
+      "inicio": 796.74,
+      "fin": 796.88,
+      "texto": "the"
+    },
+    {
+      "inicio": 796.88,
+      "fin": 797.02,
+      "texto": "fuck,"
+    },
+    {
+      "inicio": 797.06,
+      "fin": 797.18,
+      "texto": "tiene"
+    },
+    {
+      "inicio": 797.18,
+      "fin": 797.28,
+      "texto": "una"
+    },
+    {
+      "inicio": 797.28,
+      "fin": 797.74,
+      "texto": "pistola"
+    },
+    {
+      "inicio": 797.74,
+      "fin": 798.32,
+      "texto": "Señores,"
+    },
+    {
+      "inicio": 798.32,
+      "fin": 798.48,
+      "texto": "yo"
+    },
+    {
+      "inicio": 798.48,
+      "fin": 798.6,
+      "texto": "me"
+    },
+    {
+      "inicio": 798.6,
+      "fin": 798.76,
+      "texto": "voy"
+    },
+    {
+      "inicio": 798.76,
+      "fin": 798.84,
+      "texto": "a"
+    },
+    {
+      "inicio": 798.84,
+      "fin": 798.96,
+      "texto": "ir"
+    },
+    {
+      "inicio": 798.96,
+      "fin": 799.0,
+      "texto": "de"
+    },
+    {
+      "inicio": 799.0,
+      "fin": 799.18,
+      "texto": "aquí"
+    },
+    {
+      "inicio": 799.18,
+      "fin": 799.34,
+      "texto": "No"
+    },
+    {
+      "inicio": 799.34,
+      "fin": 799.54,
+      "texto": "quiero"
+    },
+    {
+      "inicio": 801.12,
+      "fin": 801.52,
+      "texto": "Causar"
+    },
+    {
+      "inicio": 801.52,
+      "fin": 801.92,
+      "texto": "problemas"
+    },
+    {
+      "inicio": 803.3,
+      "fin": 803.7,
+      "texto": "No"
+    },
+    {
+      "inicio": 803.7,
+      "fin": 803.96,
+      "texto": "puede"
+    },
+    {
+      "inicio": 803.96,
+      "fin": 804.3,
+      "texto": "ser"
+    },
+    {
+      "inicio": 804.3,
+      "fin": 804.66,
+      "texto": "Cada"
+    },
+    {
+      "inicio": 804.66,
+      "fin": 804.84,
+      "texto": "vez"
+    },
+    {
+      "inicio": 804.84,
+      "fin": 804.98,
+      "texto": "que"
+    },
+    {
+      "inicio": 804.98,
+      "fin": 805.08,
+      "texto": "me"
+    },
+    {
+      "inicio": 805.08,
+      "fin": 805.14,
+      "texto": "he"
+    },
+    {
+      "inicio": 805.14,
+      "fin": 805.26,
+      "texto": "visto"
+    },
+    {
+      "inicio": 805.26,
+      "fin": 805.36,
+      "texto": "de"
+    },
+    {
+      "inicio": 805.36,
+      "fin": 805.64,
+      "texto": "Superman"
+    },
+    {
+      "inicio": 805.64,
+      "fin": 805.94,
+      "texto": "solo"
+    },
+    {
+      "inicio": 805.94,
+      "fin": 806.26,
+      "texto": "traigo"
+    },
+    {
+      "inicio": 806.26,
+      "fin": 806.64,
+      "texto": "problemas,"
+    },
+    {
+      "inicio": 806.74,
+      "fin": 807.22,
+      "texto": "gente"
+    },
+    {
+      "inicio": 807.22,
+      "fin": 807.7,
+      "texto": "Ay"
+    },
+    {
+      "inicio": 807.7,
+      "fin": 807.82,
+      "texto": "no,"
+    },
+    {
+      "inicio": 807.88,
+      "fin": 808.18,
+      "texto": "señores"
+    },
+    {
+      "inicio": 808.18,
+      "fin": 808.54,
+      "texto": "bomberos,"
+    },
+    {
+      "inicio": 808.58,
+      "fin": 808.64,
+      "texto": "no"
+    },
+    {
+      "inicio": 808.64,
+      "fin": 808.7,
+      "texto": "hace"
+    },
+    {
+      "inicio": 808.7,
+      "fin": 809.0,
+      "texto": "falta"
+    },
+    {
+      "inicio": 809.0,
+      "fin": 809.18,
+      "texto": "Yo"
+    },
+    {
+      "inicio": 809.18,
+      "fin": 809.4,
+      "texto": "puedo"
+    },
+    {
+      "inicio": 809.4,
+      "fin": 809.7,
+      "texto": "apagar"
+    },
+    {
+      "inicio": 809.7,
+      "fin": 809.84,
+      "texto": "eso"
+    },
+    {
+      "inicio": 809.84,
+      "fin": 809.98,
+      "texto": "por"
+    },
+    {
+      "inicio": 809.98,
+      "fin": 810.28,
+      "texto": "ustedes"
+    },
+    {
+      "inicio": 810.28,
+      "fin": 810.52,
+      "texto": "Yo"
+    },
+    {
+      "inicio": 810.52,
+      "fin": 810.72,
+      "texto": "puedo"
+    },
+    {
+      "inicio": 810.72,
+      "fin": 811.16,
+      "texto": "soplar"
+    },
+    {
+      "inicio": 811.16,
+      "fin": 811.3,
+      "texto": "para"
+    },
+    {
+      "inicio": 811.3,
+      "fin": 811.56,
+      "texto": "apagar"
+    },
+    {
+      "inicio": 811.56,
+      "fin": 811.7,
+      "texto": "el"
+    },
+    {
+      "inicio": 811.7,
+      "fin": 811.9,
+      "texto": "fuego"
+    },
+    {
+      "inicio": 811.9,
+      "fin": 812.24,
+      "texto": "Creo"
+    },
+    {
+      "inicio": 812.24,
+      "fin": 812.34,
+      "texto": "que"
+    },
+    {
+      "inicio": 812.34,
+      "fin": 812.44,
+      "texto": "es"
+    },
+    {
+      "inicio": 812.44,
+      "fin": 812.6,
+      "texto": "este"
+    },
+    {
+      "inicio": 812.6,
+      "fin": 813.08,
+      "texto": "botón,"
+    },
+    {
+      "inicio": 813.08,
+      "fin": 813.22,
+      "texto": "¿no?"
+    },
+    {
+      "inicio": 813.3,
+      "fin": 813.44,
+      "texto": "El"
+    },
+    {
+      "inicio": 813.44,
+      "fin": 813.72,
+      "texto": "botón"
+    },
+    {
+      "inicio": 814.68,
+      "fin": 815.08,
+      "texto": "¡No!"
+    },
+    {
+      "inicio": 815.1,
+      "fin": 815.42,
+      "texto": "¡NOOOOOO!"
+    },
+    {
+      "inicio": 816.84,
+      "fin": 817.16,
+      "texto": "¡Señores"
+    },
+    {
+      "inicio": 817.16,
+      "fin": 817.34,
+      "texto": "de..."
+    },
+    {
+      "inicio": 817.34,
+      "fin": 817.44,
+      "texto": "¡A"
+    },
+    {
+      "inicio": 817.44,
+      "fin": 817.68,
+      "texto": "la"
+    },
+    {
+      "inicio": 817.68,
+      "fin": 818.08,
+      "texto": "p***"
+    },
+    {
+      "inicio": 818.08,
+      "fin": 818.48,
+      "texto": "madre,"
+    },
+    {
+      "inicio": 818.52,
+      "fin": 818.64,
+      "texto": "hasta"
+    },
+    {
+      "inicio": 818.64,
+      "fin": 818.8,
+      "texto": "el"
+    },
+    {
+      "inicio": 818.8,
+      "fin": 819.04,
+      "texto": "agua,"
+    },
+    {
+      "inicio": 818.92,
+      "fin": 819.32,
+      "texto": "Ese"
+    },
+    {
+      "inicio": 819.32,
+      "fin": 819.44,
+      "texto": "fue"
+    },
+    {
+      "inicio": 819.44,
+      "fin": 819.68,
+      "texto": "toda"
+    },
+    {
+      "inicio": 819.68,
+      "fin": 819.88,
+      "texto": "la"
+    },
+    {
+      "inicio": 819.88,
+      "fin": 820.12,
+      "texto": "verdad"
+    },
+    {
+      "inicio": 820.12,
+      "fin": 820.44,
+      "texto": "Te"
+    },
+    {
+      "inicio": 820.44,
+      "fin": 820.78,
+      "texto": "juro"
+    },
+    {
+      "inicio": 820.78,
+      "fin": 820.86,
+      "texto": "que"
+    },
+    {
+      "inicio": 820.86,
+      "fin": 821.0,
+      "texto": "gente,"
+    },
+    {
+      "inicio": 821.06,
+      "fin": 821.16,
+      "texto": "que"
+    },
+    {
+      "inicio": 821.16,
+      "fin": 821.22,
+      "texto": "yo"
+    },
+    {
+      "inicio": 821.22,
+      "fin": 821.34,
+      "texto": "solo"
+    },
+    {
+      "inicio": 821.34,
+      "fin": 821.46,
+      "texto": "los"
+    },
+    {
+      "inicio": 821.46,
+      "fin": 821.64,
+      "texto": "quería"
+    },
+    {
+      "inicio": 821.64,
+      "fin": 821.96,
+      "texto": "pagar"
+    },
+    {
+      "inicio": 821.96,
+      "fin": 822.72,
+      "texto": "Así"
+    },
+    {
+      "inicio": 822.72,
+      "fin": 823.28,
+      "texto": "es"
+    },
+    {
+      "inicio": 823.28,
+      "fin": 823.58,
+      "texto": "gente"
+    },
+    {
+      "inicio": 823.58,
+      "fin": 824.36,
+      "texto": "El"
+    },
+    {
+      "inicio": 824.36,
+      "fin": 824.86,
+      "texto": "cuarto"
+    },
+    {
+      "inicio": 824.86,
+      "fin": 825.76,
+      "texto": "antiguo"
+    },
+    {
+      "inicio": 825.76,
+      "fin": 826.68,
+      "texto": "Fernanfloo"
+    },
+    {
+      "inicio": 826.68,
+      "fin": 827.36,
+      "texto": "viejo"
+    },
+    {
+      "inicio": 827.36,
+      "fin": 827.76,
+      "texto": "GTA"
+    },
+    {
+      "inicio": 827.76,
+      "fin": 828.32,
+      "texto": "V"
+    },
+    {
+      "inicio": 828.32,
+      "fin": 828.92,
+      "texto": "Será"
+    },
+    {
+      "inicio": 828.92,
+      "fin": 829.66,
+      "texto": "posible"
+    }
+  ]
+}

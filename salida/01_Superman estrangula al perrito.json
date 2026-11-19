@@ -1,0 +1,764 @@
+{
+  "archivo": "salida\\01_Superman estrangula al perrito.mp4",
+  "video": "C:\\Proyectos\\clipping-ia\\videos\\Gm5BJ07acMI.mp4",
+  "inicio": 0.0,
+  "fin": 53.28,
+  "ventana": [
+    0.0,
+    59.28
+  ],
+  "titulo": "Superman estrangula al perrito",
+  "titulo_video": null,
+  "razon": "El creador reacciona con burla y sorpresa al ver a Superman estrangulando al perrito, lo que contrasta con la idea de un superhéroe protector. La reacción es intensa y auténtica, con interjecciones y comentarios ingeniosos.",
+  "puntaje": 9.0,
+  "formato": "borroso",
+  "idioma": "es",
+  "estilo_sub": {},
+  "palabras": [
+    {
+      "inicio": 0.0,
+      "fin": 0.24,
+      "texto": "Soy"
+    },
+    {
+      "inicio": 0.24,
+      "fin": 1.0,
+      "texto": "Superman"
+    },
+    {
+      "inicio": 1.0,
+      "fin": 1.6,
+      "texto": "Hola"
+    },
+    {
+      "inicio": 1.6,
+      "fin": 1.98,
+      "texto": "Chop"
+    },
+    {
+      "inicio": 1.98,
+      "fin": 2.44,
+      "texto": "¿Quieres"
+    },
+    {
+      "inicio": 2.44,
+      "fin": 2.66,
+      "texto": "jugar"
+    },
+    {
+      "inicio": 2.66,
+      "fin": 2.76,
+      "texto": "a"
+    },
+    {
+      "inicio": 2.76,
+      "fin": 2.82,
+      "texto": "la"
+    },
+    {
+      "inicio": 2.82,
+      "fin": 3.18,
+      "texto": "pelota?"
+    },
+    {
+      "inicio": 3.28,
+      "fin": 3.66,
+      "texto": "¿Quieres"
+    },
+    {
+      "inicio": 3.66,
+      "fin": 3.78,
+      "texto": "jugar"
+    },
+    {
+      "inicio": 3.78,
+      "fin": 3.9,
+      "texto": "a"
+    },
+    {
+      "inicio": 3.9,
+      "fin": 3.98,
+      "texto": "la"
+    },
+    {
+      "inicio": 3.98,
+      "fin": 4.24,
+      "texto": "pelota?"
+    },
+    {
+      "inicio": 4.42,
+      "fin": 4.56,
+      "texto": "Muy"
+    },
+    {
+      "inicio": 4.56,
+      "fin": 4.72,
+      "texto": "bien,"
+    },
+    {
+      "inicio": 4.8,
+      "fin": 4.98,
+      "texto": "pero"
+    },
+    {
+      "inicio": 4.98,
+      "fin": 5.22,
+      "texto": "ahora"
+    },
+    {
+      "inicio": 5.22,
+      "fin": 5.52,
+      "texto": "no"
+    },
+    {
+      "inicio": 5.52,
+      "fin": 5.74,
+      "texto": "está"
+    },
+    {
+      "inicio": 5.74,
+      "fin": 6.12,
+      "texto": "el"
+    },
+    {
+      "inicio": 6.12,
+      "fin": 6.44,
+      "texto": "señor"
+    },
+    {
+      "inicio": 6.44,
+      "fin": 6.68,
+      "texto": "Nick"
+    },
+    {
+      "inicio": 6.68,
+      "fin": 6.94,
+      "texto": "El"
+    },
+    {
+      "inicio": 6.94,
+      "fin": 7.24,
+      "texto": "señor"
+    },
+    {
+      "inicio": 7.24,
+      "fin": 7.82,
+      "texto": "Chocolatito"
+    },
+    {
+      "inicio": 7.82,
+      "fin": 8.06,
+      "texto": "Sino"
+    },
+    {
+      "inicio": 8.06,
+      "fin": 8.16,
+      "texto": "que"
+    },
+    {
+      "inicio": 8.16,
+      "fin": 8.34,
+      "texto": "soy"
+    },
+    {
+      "inicio": 8.34,
+      "fin": 8.54,
+      "texto": "yo"
+    },
+    {
+      "inicio": 8.54,
+      "fin": 8.72,
+      "texto": "Tu"
+    },
+    {
+      "inicio": 8.72,
+      "fin": 8.96,
+      "texto": "amo"
+    },
+    {
+      "inicio": 8.96,
+      "fin": 9.12,
+      "texto": "y"
+    },
+    {
+      "inicio": 9.12,
+      "fin": 9.32,
+      "texto": "señor"
+    },
+    {
+      "inicio": 9.32,
+      "fin": 10.02,
+      "texto": "Superman"
+    },
+    {
+      "inicio": 10.02,
+      "fin": 10.38,
+      "texto": "Y"
+    },
+    {
+      "inicio": 10.38,
+      "fin": 10.48,
+      "texto": "no"
+    },
+    {
+      "inicio": 10.48,
+      "fin": 10.64,
+      "texto": "te..."
+    },
+    {
+      "inicio": 10.64,
+      "fin": 10.88,
+      "texto": "¡No!"
+    },
+    {
+      "inicio": 11.68,
+      "fin": 11.9,
+      "texto": "¡Te"
+    },
+    {
+      "inicio": 11.9,
+      "fin": 12.2,
+      "texto": "tengo!"
+    },
+    {
+      "inicio": 12.46,
+      "fin": 12.9,
+      "texto": "¡Y"
+    },
+    {
+      "inicio": 12.93,
+      "fin": 13.29,
+      "texto": "te"
+    },
+    {
+      "inicio": 13.29,
+      "fin": 13.79,
+      "texto": "salvo!"
+    },
+    {
+      "inicio": 15.6,
+      "fin": 16.04,
+      "texto": "¿Qué"
+    },
+    {
+      "inicio": 16.04,
+      "fin": 16.38,
+      "texto": "dijiste?"
+    },
+    {
+      "inicio": 16.52,
+      "fin": 16.72,
+      "texto": "¿10"
+    },
+    {
+      "inicio": 16.72,
+      "fin": 17.02,
+      "texto": "años"
+    },
+    {
+      "inicio": 17.02,
+      "fin": 17.3,
+      "texto": "después"
+    },
+    {
+      "inicio": 17.3,
+      "fin": 17.52,
+      "texto": "iba"
+    },
+    {
+      "inicio": 17.52,
+      "fin": 17.6,
+      "texto": "a"
+    },
+    {
+      "inicio": 17.6,
+      "fin": 17.8,
+      "texto": "morir"
+    },
+    {
+      "inicio": 17.8,
+      "fin": 17.98,
+      "texto": "Chop?"
+    },
+    {
+      "inicio": 18.1,
+      "fin": 18.54,
+      "texto": "¡Claro"
+    },
+    {
+      "inicio": 18.54,
+      "fin": 18.98,
+      "texto": "que..."
+    },
+    {
+      "inicio": 18.98,
+      "fin": 19.42,
+      "texto": "Superman,"
+    },
+    {
+      "inicio": 19.7,
+      "fin": 19.8,
+      "texto": "¿por"
+    },
+    {
+      "inicio": 19.8,
+      "fin": 19.94,
+      "texto": "qué"
+    },
+    {
+      "inicio": 19.94,
+      "fin": 20.06,
+      "texto": "me"
+    },
+    {
+      "inicio": 20.06,
+      "fin": 20.22,
+      "texto": "estás"
+    },
+    {
+      "inicio": 20.22,
+      "fin": 20.78,
+      "texto": "estrangulando"
+    },
+    {
+      "inicio": 20.78,
+      "fin": 20.88,
+      "texto": "al"
+    },
+    {
+      "inicio": 20.88,
+      "fin": 21.2,
+      "texto": "perrito?"
+    },
+    {
+      "inicio": 21.32,
+      "fin": 21.5,
+      "texto": "¿Por"
+    },
+    {
+      "inicio": 21.5,
+      "fin": 21.72,
+      "texto": "qué"
+    },
+    {
+      "inicio": 21.72,
+      "fin": 21.84,
+      "texto": "me"
+    },
+    {
+      "inicio": 21.84,
+      "fin": 22.06,
+      "texto": "estás"
+    },
+    {
+      "inicio": 22.06,
+      "fin": 22.72,
+      "texto": "estrangulando"
+    },
+    {
+      "inicio": 22.72,
+      "fin": 23.04,
+      "texto": "al"
+    },
+    {
+      "inicio": 23.04,
+      "fin": 23.58,
+      "texto": "perrito?"
+    },
+    {
+      "inicio": 23.7,
+      "fin": 23.84,
+      "texto": "Y"
+    },
+    {
+      "inicio": 23.84,
+      "fin": 24.02,
+      "texto": "Chop,"
+    },
+    {
+      "inicio": 24.1,
+      "fin": 24.24,
+      "texto": "¿por"
+    },
+    {
+      "inicio": 24.24,
+      "fin": 24.38,
+      "texto": "qué"
+    },
+    {
+      "inicio": 24.38,
+      "fin": 24.48,
+      "texto": "te"
+    },
+    {
+      "inicio": 24.48,
+      "fin": 24.78,
+      "texto": "pusiste"
+    },
+    {
+      "inicio": 24.78,
+      "fin": 25.0,
+      "texto": "así?"
+    },
+    {
+      "inicio": 25.26,
+      "fin": 25.4,
+      "texto": "Dios"
+    },
+    {
+      "inicio": 25.4,
+      "fin": 25.54,
+      "texto": "mío,"
+    },
+    {
+      "inicio": 25.56,
+      "fin": 25.7,
+      "texto": "y"
+    },
+    {
+      "inicio": 25.7,
+      "fin": 26.0,
+      "texto": "pareces"
+    },
+    {
+      "inicio": 26.0,
+      "fin": 26.18,
+      "texto": "un"
+    },
+    {
+      "inicio": 26.18,
+      "fin": 26.84,
+      "texto": "guajolote"
+    },
+    {
+      "inicio": 26.84,
+      "fin": 27.02,
+      "texto": "Un"
+    },
+    {
+      "inicio": 27.02,
+      "fin": 27.56,
+      "texto": "nahual"
+    },
+    {
+      "inicio": 27.56,
+      "fin": 27.96,
+      "texto": "¿Pareces"
+    },
+    {
+      "inicio": 27.96,
+      "fin": 28.4,
+      "texto": "patita"
+    },
+    {
+      "inicio": 28.4,
+      "fin": 28.5,
+      "texto": "de"
+    },
+    {
+      "inicio": 28.5,
+      "fin": 28.86,
+      "texto": "pollo?"
+    },
+    {
+      "inicio": 29.34,
+      "fin": 29.78,
+      "texto": "Bueno,"
+    },
+    {
+      "inicio": 29.86,
+      "fin": 30.14,
+      "texto": "vamos"
+    },
+    {
+      "inicio": 30.14,
+      "fin": 30.3,
+      "texto": "a"
+    },
+    {
+      "inicio": 30.3,
+      "fin": 30.56,
+      "texto": "soltar"
+    },
+    {
+      "inicio": 30.56,
+      "fin": 30.68,
+      "texto": "al"
+    },
+    {
+      "inicio": 30.68,
+      "fin": 30.98,
+      "texto": "perrito"
+    },
+    {
+      "inicio": 30.98,
+      "fin": 31.32,
+      "texto": "Perrito,"
+    },
+    {
+      "inicio": 31.42,
+      "fin": 31.46,
+      "texto": "te"
+    },
+    {
+      "inicio": 31.46,
+      "fin": 31.56,
+      "texto": "voy"
+    },
+    {
+      "inicio": 31.56,
+      "fin": 31.64,
+      "texto": "a"
+    },
+    {
+      "inicio": 31.64,
+      "fin": 31.9,
+      "texto": "soltar"
+    },
+    {
+      "inicio": 31.9,
+      "fin": 32.02,
+      "texto": "de"
+    },
+    {
+      "inicio": 32.02,
+      "fin": 32.2,
+      "texto": "manera"
+    },
+    {
+      "inicio": 32.2,
+      "fin": 32.76,
+      "texto": "suave"
+    },
+    {
+      "inicio": 33.74,
+      "fin": 34.24,
+      "texto": "¡¿QUÉ?!"
+    },
+    {
+      "inicio": 34.24,
+      "fin": 34.62,
+      "texto": "¿Qué"
+    },
+    {
+      "inicio": 34.62,
+      "fin": 34.92,
+      "texto": "te"
+    },
+    {
+      "inicio": 34.92,
+      "fin": 35.68,
+      "texto": "pasa?"
+    },
+    {
+      "inicio": 36.02,
+      "fin": 36.48,
+      "texto": "What"
+    },
+    {
+      "inicio": 36.48,
+      "fin": 36.68,
+      "texto": "the"
+    },
+    {
+      "inicio": 36.68,
+      "fin": 36.98,
+      "texto": "fuck,"
+    },
+    {
+      "inicio": 37.08,
+      "fin": 37.46,
+      "texto": "perrito"
+    },
+    {
+      "inicio": 37.46,
+      "fin": 37.9,
+      "texto": "A"
+    },
+    {
+      "inicio": 37.9,
+      "fin": 39.3,
+      "texto": "ver,"
+    },
+    {
+      "inicio": 39.36,
+      "fin": 39.62,
+      "texto": "perrito,"
+    },
+    {
+      "inicio": 39.68,
+      "fin": 39.78,
+      "texto": "te"
+    },
+    {
+      "inicio": 39.78,
+      "fin": 39.84,
+      "texto": "voy"
+    },
+    {
+      "inicio": 39.84,
+      "fin": 39.92,
+      "texto": "a"
+    },
+    {
+      "inicio": 39.92,
+      "fin": 40.0,
+      "texto": "ir"
+    },
+    {
+      "inicio": 40.0,
+      "fin": 40.04,
+      "texto": "a"
+    },
+    {
+      "inicio": 40.04,
+      "fin": 40.4,
+      "texto": "rescatar"
+    },
+    {
+      "inicio": 40.4,
+      "fin": 41.26,
+      "texto": "Te"
+    },
+    {
+      "inicio": 40.96,
+      "fin": 41.68,
+      "texto": "¡Perro!"
+    },
+    {
+      "inicio": 45.26,
+      "fin": 45.62,
+      "texto": "juro"
+    },
+    {
+      "inicio": 45.62,
+      "fin": 45.76,
+      "texto": "que"
+    },
+    {
+      "inicio": 45.76,
+      "fin": 45.88,
+      "texto": "yo"
+    },
+    {
+      "inicio": 45.88,
+      "fin": 46.12,
+      "texto": "soy"
+    },
+    {
+      "inicio": 46.12,
+      "fin": 46.32,
+      "texto": "un"
+    },
+    {
+      "inicio": 46.32,
+      "fin": 47.3,
+      "texto": "superhéroe"
+    },
+    {
+      "inicio": 47.3,
+      "fin": 47.5,
+      "texto": "No"
+    },
+    {
+      "inicio": 47.5,
+      "fin": 47.74,
+      "texto": "soy"
+    },
+    {
+      "inicio": 47.74,
+      "fin": 47.94,
+      "texto": "un"
+    },
+    {
+      "inicio": 47.94,
+      "fin": 48.4,
+      "texto": "villano"
+    },
+    {
+      "inicio": 48.4,
+      "fin": 48.88,
+      "texto": "¡Chop!"
+    },
+    {
+      "inicio": 49.02,
+      "fin": 49.12,
+      "texto": "¡Te"
+    },
+    {
+      "inicio": 49.12,
+      "fin": 49.66,
+      "texto": "tenías"
+    },
+    {
+      "inicio": 49.66,
+      "fin": 49.84,
+      "texto": "que"
+    },
+    {
+      "inicio": 49.84,
+      "fin": 50.1,
+      "texto": "volver"
+    },
+    {
+      "inicio": 50.1,
+      "fin": 50.34,
+      "texto": "a"
+    },
+    {
+      "inicio": 50.34,
+      "fin": 50.72,
+      "texto": "morir!"
+    },
+    {
+      "inicio": 50.82,
+      "fin": 51.1,
+      "texto": "¡Esto"
+    },
+    {
+      "inicio": 51.1,
+      "fin": 51.24,
+      "texto": "se"
+    },
+    {
+      "inicio": 51.24,
+      "fin": 51.4,
+      "texto": "va"
+    },
+    {
+      "inicio": 51.4,
+      "fin": 51.42,
+      "texto": "a"
+    },
+    {
+      "inicio": 51.42,
+      "fin": 52.08,
+      "texto": "repetir!"
+    },
+    {
+      "inicio": 52.12,
+      "fin": 52.4,
+      "texto": "¡Diez"
+    },
+    {
+      "inicio": 52.4,
+      "fin": 52.68,
+      "texto": "años"
+    },
+    {
+      "inicio": 52.68,
+      "fin": 52.96,
+      "texto": "después!"
+    },
+    {
+      "inicio": 53.36,
+      "fin": 53.78,
+      "texto": "¡Noooo!"
+    },
+    {
+      "inicio": 58.48,
+      "fin": 59.18,
+      "texto": "¡¿HUUUU?!"
+    }
+  ]
+}

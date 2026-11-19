@@ -194,6 +194,7 @@ def cortar_clips(ruta_video, clips, carpeta_salida="salida", formato="borroso",
             "titulo_video": titulo_cfg,      # título que se muestra dentro del video (o None)
             "razon": c.get("razon", ""),
             "puntaje": c.get("puntaje"),
+            "tipo": c.get("tipo"),
             "formato": formato,
             "idioma": idioma,
             "estilo_sub": estilo_sub or {},

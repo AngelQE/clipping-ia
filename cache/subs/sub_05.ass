@@ -1,0 +1,116 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,56,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,5,0,2,64,64,518,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:00.24,Default,,0,0,0,,{\c&H00FFFF&}QUE{\c&HFFFFFF&} A USTED LE
+Dialogue: 0,0:00:00.24,0:00:00.32,Default,,0,0,0,,QUE {\c&H00FFFF&}A{\c&HFFFFFF&} USTED LE
+Dialogue: 0,0:00:00.28,0:00:00.42,Default,,0,0,0,,QUE A {\c&H00FFFF&}USTED{\c&HFFFFFF&} LE
+Dialogue: 0,0:00:00.42,0:00:00.58,Default,,0,0,0,,QUE A USTED {\c&H00FFFF&}LE{\c&HFFFFFF&}
+Dialogue: 0,0:00:00.58,0:00:00.86,Default,,0,0,0,,{\c&H00FFFF&}DIERON{\c&HFFFFFF&} EL CHILE MÁS
+Dialogue: 0,0:00:00.86,0:00:01.02,Default,,0,0,0,,DIERON {\c&H00FFFF&}EL{\c&HFFFFFF&} CHILE MÁS
+Dialogue: 0,0:00:01.02,0:00:01.28,Default,,0,0,0,,DIERON EL {\c&H00FFFF&}CHILE{\c&HFFFFFF&} MÁS
+Dialogue: 0,0:00:01.28,0:00:01.40,Default,,0,0,0,,DIERON EL CHILE {\c&H00FFFF&}MÁS{\c&HFFFFFF&}
+Dialogue: 0,0:00:01.40,0:00:01.78,Default,,0,0,0,,{\c&H00FFFF&}PICANTE{\c&HFFFFFF&} EL HABANERO WHAT
+Dialogue: 0,0:00:01.78,0:00:01.98,Default,,0,0,0,,PICANTE {\c&H00FFFF&}EL{\c&HFFFFFF&} HABANERO WHAT
+Dialogue: 0,0:00:01.98,0:00:02.42,Default,,0,0,0,,PICANTE EL {\c&H00FFFF&}HABANERO{\c&HFFFFFF&} WHAT
+Dialogue: 0,0:00:02.42,0:00:02.80,Default,,0,0,0,,PICANTE EL HABANERO {\c&H00FFFF&}WHAT{\c&HFFFFFF&}
+Dialogue: 0,0:00:02.80,0:00:02.94,Default,,0,0,0,,{\c&H00FFFF&}THE{\c&HFFFFFF&} FUCK TIENE UNA
+Dialogue: 0,0:00:02.94,0:00:03.12,Default,,0,0,0,,THE {\c&H00FFFF&}FUCK{\c&HFFFFFF&} TIENE UNA
+Dialogue: 0,0:00:03.12,0:00:03.24,Default,,0,0,0,,THE FUCK {\c&H00FFFF&}TIENE{\c&HFFFFFF&} UNA
+Dialogue: 0,0:00:03.24,0:00:03.34,Default,,0,0,0,,THE FUCK TIENE {\c&H00FFFF&}UNA{\c&HFFFFFF&}
+Dialogue: 0,0:00:03.34,0:00:03.80,Default,,0,0,0,,{\c&H00FFFF&}PISTOLA{\c&HFFFFFF&} SEÑORES YO ME
+Dialogue: 0,0:00:03.80,0:00:04.38,Default,,0,0,0,,PISTOLA {\c&H00FFFF&}SEÑORES{\c&HFFFFFF&} YO ME
+Dialogue: 0,0:00:04.38,0:00:04.54,Default,,0,0,0,,PISTOLA SEÑORES {\c&H00FFFF&}YO{\c&HFFFFFF&} ME
+Dialogue: 0,0:00:04.54,0:00:04.66,Default,,0,0,0,,PISTOLA SEÑORES YO {\c&H00FFFF&}ME{\c&HFFFFFF&}
+Dialogue: 0,0:00:04.66,0:00:04.82,Default,,0,0,0,,{\c&H00FFFF&}VOY{\c&HFFFFFF&} A IR DE
+Dialogue: 0,0:00:04.82,0:00:04.90,Default,,0,0,0,,VOY {\c&H00FFFF&}A{\c&HFFFFFF&} IR DE
+Dialogue: 0,0:00:04.90,0:00:05.02,Default,,0,0,0,,VOY A {\c&H00FFFF&}IR{\c&HFFFFFF&} DE
+Dialogue: 0,0:00:05.02,0:00:05.10,Default,,0,0,0,,VOY A IR {\c&H00FFFF&}DE{\c&HFFFFFF&}
+Dialogue: 0,0:00:05.06,0:00:05.24,Default,,0,0,0,,{\c&H00FFFF&}AQUÍ{\c&HFFFFFF&} NO QUIERO
+Dialogue: 0,0:00:05.24,0:00:05.40,Default,,0,0,0,,AQUÍ {\c&H00FFFF&}NO{\c&HFFFFFF&} QUIERO
+Dialogue: 0,0:00:05.40,0:00:05.80,Default,,0,0,0,,AQUÍ NO {\c&H00FFFF&}QUIERO{\c&HFFFFFF&}
+Dialogue: 0,0:00:07.18,0:00:07.58,Default,,0,0,0,,{\c&H00FFFF&}CAUSAR{\c&HFFFFFF&} PROBLEMAS
+Dialogue: 0,0:00:07.58,0:00:08.18,Default,,0,0,0,,CAUSAR {\c&H00FFFF&}PROBLEMAS{\c&HFFFFFF&}
+Dialogue: 0,0:00:09.36,0:00:09.76,Default,,0,0,0,,{\c&H00FFFF&}NO{\c&HFFFFFF&} PUEDE SER CADA
+Dialogue: 0,0:00:09.76,0:00:10.02,Default,,0,0,0,,NO {\c&H00FFFF&}PUEDE{\c&HFFFFFF&} SER CADA
+Dialogue: 0,0:00:10.02,0:00:10.36,Default,,0,0,0,,NO PUEDE {\c&H00FFFF&}SER{\c&HFFFFFF&} CADA
+Dialogue: 0,0:00:10.36,0:00:10.72,Default,,0,0,0,,NO PUEDE SER {\c&H00FFFF&}CADA{\c&HFFFFFF&}
+Dialogue: 0,0:00:10.72,0:00:10.90,Default,,0,0,0,,{\c&H00FFFF&}VEZ{\c&HFFFFFF&} QUE ME HE
+Dialogue: 0,0:00:10.90,0:00:11.04,Default,,0,0,0,,VEZ {\c&H00FFFF&}QUE{\c&HFFFFFF&} ME HE
+Dialogue: 0,0:00:11.04,0:00:11.14,Default,,0,0,0,,VEZ QUE {\c&H00FFFF&}ME{\c&HFFFFFF&} HE
+Dialogue: 0,0:00:11.14,0:00:11.22,Default,,0,0,0,,VEZ QUE ME {\c&H00FFFF&}HE{\c&HFFFFFF&}
+Dialogue: 0,0:00:11.20,0:00:11.32,Default,,0,0,0,,{\c&H00FFFF&}VISTO{\c&HFFFFFF&} DE SUPERMAN SOLO
+Dialogue: 0,0:00:11.32,0:00:11.42,Default,,0,0,0,,VISTO {\c&H00FFFF&}DE{\c&HFFFFFF&} SUPERMAN SOLO
+Dialogue: 0,0:00:11.42,0:00:11.70,Default,,0,0,0,,VISTO DE {\c&H00FFFF&}SUPERMAN{\c&HFFFFFF&} SOLO
+Dialogue: 0,0:00:11.70,0:00:12.00,Default,,0,0,0,,VISTO DE SUPERMAN {\c&H00FFFF&}SOLO{\c&HFFFFFF&}
+Dialogue: 0,0:00:12.00,0:00:12.32,Default,,0,0,0,,{\c&H00FFFF&}TRAIGO{\c&HFFFFFF&} PROBLEMAS GENTE AY
+Dialogue: 0,0:00:12.32,0:00:12.80,Default,,0,0,0,,TRAIGO {\c&H00FFFF&}PROBLEMAS{\c&HFFFFFF&} GENTE AY
+Dialogue: 0,0:00:12.80,0:00:13.28,Default,,0,0,0,,TRAIGO PROBLEMAS {\c&H00FFFF&}GENTE{\c&HFFFFFF&} AY
+Dialogue: 0,0:00:13.28,0:00:13.76,Default,,0,0,0,,TRAIGO PROBLEMAS GENTE {\c&H00FFFF&}AY{\c&HFFFFFF&}
+Dialogue: 0,0:00:13.76,0:00:13.94,Default,,0,0,0,,{\c&H00FFFF&}NO{\c&HFFFFFF&} SEÑORES BOMBEROS NO
+Dialogue: 0,0:00:13.94,0:00:14.24,Default,,0,0,0,,NO {\c&H00FFFF&}SEÑORES{\c&HFFFFFF&} BOMBEROS NO
+Dialogue: 0,0:00:14.24,0:00:14.64,Default,,0,0,0,,NO SEÑORES {\c&H00FFFF&}BOMBEROS{\c&HFFFFFF&} NO
+Dialogue: 0,0:00:14.64,0:00:14.72,Default,,0,0,0,,NO SEÑORES BOMBEROS {\c&H00FFFF&}NO{\c&HFFFFFF&}
+Dialogue: 0,0:00:14.70,0:00:14.78,Default,,0,0,0,,{\c&H00FFFF&}HACE{\c&HFFFFFF&} FALTA YO PUEDO
+Dialogue: 0,0:00:14.76,0:00:15.06,Default,,0,0,0,,HACE {\c&H00FFFF&}FALTA{\c&HFFFFFF&} YO PUEDO
+Dialogue: 0,0:00:15.06,0:00:15.24,Default,,0,0,0,,HACE FALTA {\c&H00FFFF&}YO{\c&HFFFFFF&} PUEDO
+Dialogue: 0,0:00:15.24,0:00:15.46,Default,,0,0,0,,HACE FALTA YO {\c&H00FFFF&}PUEDO{\c&HFFFFFF&}
+Dialogue: 0,0:00:15.46,0:00:15.76,Default,,0,0,0,,{\c&H00FFFF&}APAGAR{\c&HFFFFFF&} ESO POR USTEDES
+Dialogue: 0,0:00:15.76,0:00:15.90,Default,,0,0,0,,APAGAR {\c&H00FFFF&}ESO{\c&HFFFFFF&} POR USTEDES
+Dialogue: 0,0:00:15.90,0:00:16.04,Default,,0,0,0,,APAGAR ESO {\c&H00FFFF&}POR{\c&HFFFFFF&} USTEDES
+Dialogue: 0,0:00:16.04,0:00:16.34,Default,,0,0,0,,APAGAR ESO POR {\c&H00FFFF&}USTEDES{\c&HFFFFFF&}
+Dialogue: 0,0:00:16.34,0:00:16.58,Default,,0,0,0,,{\c&H00FFFF&}YO{\c&HFFFFFF&} PUEDO SOPLAR PARA
+Dialogue: 0,0:00:16.58,0:00:16.78,Default,,0,0,0,,YO {\c&H00FFFF&}PUEDO{\c&HFFFFFF&} SOPLAR PARA
+Dialogue: 0,0:00:16.78,0:00:17.22,Default,,0,0,0,,YO PUEDO {\c&H00FFFF&}SOPLAR{\c&HFFFFFF&} PARA
+Dialogue: 0,0:00:17.22,0:00:17.36,Default,,0,0,0,,YO PUEDO SOPLAR {\c&H00FFFF&}PARA{\c&HFFFFFF&}
+Dialogue: 0,0:00:17.36,0:00:17.62,Default,,0,0,0,,{\c&H00FFFF&}APAGAR{\c&HFFFFFF&} EL FUEGO CREO
+Dialogue: 0,0:00:17.62,0:00:17.76,Default,,0,0,0,,APAGAR {\c&H00FFFF&}EL{\c&HFFFFFF&} FUEGO CREO
+Dialogue: 0,0:00:17.76,0:00:17.96,Default,,0,0,0,,APAGAR EL {\c&H00FFFF&}FUEGO{\c&HFFFFFF&} CREO
+Dialogue: 0,0:00:17.96,0:00:18.30,Default,,0,0,0,,APAGAR EL FUEGO {\c&H00FFFF&}CREO{\c&HFFFFFF&}
+Dialogue: 0,0:00:18.30,0:00:18.40,Default,,0,0,0,,{\c&H00FFFF&}QUE{\c&HFFFFFF&} ES ESTE BOTÓN
+Dialogue: 0,0:00:18.40,0:00:18.50,Default,,0,0,0,,QUE {\c&H00FFFF&}ES{\c&HFFFFFF&} ESTE BOTÓN
+Dialogue: 0,0:00:18.50,0:00:18.66,Default,,0,0,0,,QUE ES {\c&H00FFFF&}ESTE{\c&HFFFFFF&} BOTÓN
+Dialogue: 0,0:00:18.66,0:00:19.14,Default,,0,0,0,,QUE ES ESTE {\c&H00FFFF&}BOTÓN{\c&HFFFFFF&}
+Dialogue: 0,0:00:19.14,0:00:19.36,Default,,0,0,0,,{\c&H00FFFF&}¿NO?{\c&HFFFFFF&}
+Dialogue: 0,0:00:19.36,0:00:19.50,Default,,0,0,0,,{\c&H00FFFF&}EL{\c&HFFFFFF&} BOTÓN
+Dialogue: 0,0:00:19.50,0:00:19.98,Default,,0,0,0,,EL {\c&H00FFFF&}BOTÓN{\c&HFFFFFF&}
+Dialogue: 0,0:00:20.74,0:00:21.16,Default,,0,0,0,,{\c&H00FFFF&}¡NO!{\c&HFFFFFF&}
+Dialogue: 0,0:00:21.16,0:00:21.68,Default,,0,0,0,,{\c&H00FFFF&}¡NOOOOOO!{\c&HFFFFFF&}
+Dialogue: 0,0:00:22.90,0:00:23.22,Default,,0,0,0,,{\c&H00FFFF&}¡SEÑORES{\c&HFFFFFF&} DE
+Dialogue: 0,0:00:23.22,0:00:23.40,Default,,0,0,0,,¡SEÑORES {\c&H00FFFF&}DE{\c&HFFFFFF&}
+Dialogue: 0,0:00:23.40,0:00:23.50,Default,,0,0,0,,{\c&H00FFFF&}¡A{\c&HFFFFFF&} LA P*** MADRE
+Dialogue: 0,0:00:23.50,0:00:23.74,Default,,0,0,0,,¡A {\c&H00FFFF&}LA{\c&HFFFFFF&} P*** MADRE
+Dialogue: 0,0:00:23.74,0:00:24.14,Default,,0,0,0,,¡A LA {\c&H00FFFF&}P***{\c&HFFFFFF&} MADRE
+Dialogue: 0,0:00:24.14,0:00:24.58,Default,,0,0,0,,¡A LA P*** {\c&H00FFFF&}MADRE{\c&HFFFFFF&}
+Dialogue: 0,0:00:24.58,0:00:24.70,Default,,0,0,0,,{\c&H00FFFF&}HASTA{\c&HFFFFFF&} EL AGUA ESE
+Dialogue: 0,0:00:24.70,0:00:24.86,Default,,0,0,0,,HASTA {\c&H00FFFF&}EL{\c&HFFFFFF&} AGUA ESE
+Dialogue: 0,0:00:24.86,0:00:24.98,Default,,0,0,0,,HASTA EL {\c&H00FFFF&}AGUA{\c&HFFFFFF&} ESE
+Dialogue: 0,0:00:24.98,0:00:25.38,Default,,0,0,0,,HASTA EL AGUA {\c&H00FFFF&}ESE{\c&HFFFFFF&}
+Dialogue: 0,0:00:25.38,0:00:25.50,Default,,0,0,0,,{\c&H00FFFF&}FUE{\c&HFFFFFF&} TODA LA VERDAD
+Dialogue: 0,0:00:25.50,0:00:25.74,Default,,0,0,0,,FUE {\c&H00FFFF&}TODA{\c&HFFFFFF&} LA VERDAD
+Dialogue: 0,0:00:25.74,0:00:25.94,Default,,0,0,0,,FUE TODA {\c&H00FFFF&}LA{\c&HFFFFFF&} VERDAD
+Dialogue: 0,0:00:25.94,0:00:26.18,Default,,0,0,0,,FUE TODA LA {\c&H00FFFF&}VERDAD{\c&HFFFFFF&}
+Dialogue: 0,0:00:26.18,0:00:26.50,Default,,0,0,0,,{\c&H00FFFF&}TE{\c&HFFFFFF&} JURO QUE GENTE
+Dialogue: 0,0:00:26.50,0:00:26.84,Default,,0,0,0,,TE {\c&H00FFFF&}JURO{\c&HFFFFFF&} QUE GENTE
+Dialogue: 0,0:00:26.84,0:00:26.92,Default,,0,0,0,,TE JURO {\c&H00FFFF&}QUE{\c&HFFFFFF&} GENTE
+Dialogue: 0,0:00:26.92,0:00:27.12,Default,,0,0,0,,TE JURO QUE {\c&H00FFFF&}GENTE{\c&HFFFFFF&}
+Dialogue: 0,0:00:27.12,0:00:27.22,Default,,0,0,0,,{\c&H00FFFF&}QUE{\c&HFFFFFF&} YO SOLO LOS
+Dialogue: 0,0:00:27.22,0:00:27.30,Default,,0,0,0,,QUE {\c&H00FFFF&}YO{\c&HFFFFFF&} SOLO LOS
+Dialogue: 0,0:00:27.28,0:00:27.40,Default,,0,0,0,,QUE YO {\c&H00FFFF&}SOLO{\c&HFFFFFF&} LOS
+Dialogue: 0,0:00:27.40,0:00:27.52,Default,,0,0,0,,QUE YO SOLO {\c&H00FFFF&}LOS{\c&HFFFFFF&}
+Dialogue: 0,0:00:27.52,0:00:27.70,Default,,0,0,0,,{\c&H00FFFF&}QUERÍA{\c&HFFFFFF&} PAGAR ASÍ ES
+Dialogue: 0,0:00:27.70,0:00:28.02,Default,,0,0,0,,QUERÍA {\c&H00FFFF&}PAGAR{\c&HFFFFFF&} ASÍ ES
+Dialogue: 0,0:00:28.02,0:00:28.78,Default,,0,0,0,,QUERÍA PAGAR {\c&H00FFFF&}ASÍ{\c&HFFFFFF&} ES
+Dialogue: 0,0:00:28.78,0:00:29.34,Default,,0,0,0,,QUERÍA PAGAR ASÍ {\c&H00FFFF&}ES{\c&HFFFFFF&}
+Dialogue: 0,0:00:29.34,0:00:29.64,Default,,0,0,0,,{\c&H00FFFF&}GENTE{\c&HFFFFFF&} EL CUARTO
+Dialogue: 0,0:00:29.64,0:00:30.42,Default,,0,0,0,,GENTE {\c&H00FFFF&}EL{\c&HFFFFFF&} CUARTO
+Dialogue: 0,0:00:30.42,0:00:30.89,Default,,0,0,0,,GENTE EL {\c&H00FFFF&}CUARTO{\c&HFFFFFF&}
