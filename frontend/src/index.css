@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme static {
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --color-bg: #0e1116;
+  --color-panel: #151a21;
+  --color-raised: #1c222b;
+  --color-line: #2a323d;
+  --color-muted: #8b96a5;
+  --color-accent: #4c8dff;
+  --color-ok: #3ddc97;
+  --color-bad: #ff6b6b;
+  --color-warn: #f5b84b;
+
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Base para que se sienta nativa en el celular (skill mobile-native) */
+html {
+  -webkit-tap-highlight-color: transparent; /* sin el destello gris al tocar */
+  -webkit-text-size-adjust: 100%;
+  overscroll-behavior: none;                /* sin "jalar para recargar" */
+  color-scheme: dark;
+  background: var(--color-bg);
+  color: #e6eaf0;
+  font-family: var(--font-sans);
+}
+
+input, textarea, select {
+  font-size: 16px;                          /* iOS no hace zoom al enfocar */
+}
+
+button, a, [role="button"] {
+  touch-action: manipulation;               /* sin retraso al tocar */
+}
+
+button, [role="button"] {
+  user-select: none;                        /* el texto de un botón no se selecciona */
+  -webkit-user-select: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Números de ancho fijo: los tiempos no "bailan" al cambiar */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Respuesta inmediata al presionar, solo si el usuario no pidió menos movimiento */
+.press {
+  transition: transform 120ms var(--ease-out-strong), background-color 150ms, border-color 150ms;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .press:active {
+    transform: scale(0.98);
+  }
+}

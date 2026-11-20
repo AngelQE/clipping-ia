@@ -1,0 +1,49 @@
+import type { Clip } from './types'
+
+export const clipsDemo: Clip[] = [
+  {
+    id: 'c1',
+    titulo: 'Un tanque se bloquea con basura',
+    tipo: 'reaccion',
+    inicio: 312.4,
+    fin: 358.1,
+    puntaje: 9,
+    razon: 'Planteamiento claro, reacción de incredulidad y remate gracioso.',
+    tituloVideo: { texto: 'Un tanque se bloquea con basura', x: 50, y: 16, tamano: 64 },
+  },
+  {
+    id: 'c2',
+    titulo: '¿Cómo le llega a los chavos mal hablados?',
+    tipo: 'podcast',
+    inicio: 95.0,
+    fin: 171.5,
+    puntaje: 8,
+    razon: 'Pregunta fuerte seguida de una anécdota completa.',
+    tituloVideo: { texto: '¿Cómo le llega a los chavos mal hablados?', x: 50, y: 16, tamano: 64 },
+  },
+  {
+    id: 'c3',
+    titulo: 'De una maleta salió un hotel de 8 pisos y nadie entiende cómo cabía todo ahí dentro',
+    tipo: 'reaccion',
+    inicio: 640.2,
+    fin: 702.9,
+    puntaje: 9,
+    razon: 'El TikTok completo y la reacción principal justo después.',
+    tituloVideo: {
+      texto: 'De una maleta salió un hotel de 8 pisos y nadie entiende cómo cabía todo ahí dentro',
+      x: 50,
+      y: 16,
+      tamano: 64,
+    },
+  },
+  {
+    id: 'c4',
+    titulo: '🔥 Esto NO se hace en un directo 🔥',
+    tipo: 'stream',
+    inicio: 1520.0,
+    fin: 1561.4,
+    puntaje: 7,
+    razon: 'Pico de emoción con reacción clara del streamer.',
+    tituloVideo: { texto: '🔥 Esto NO se hace en un directo 🔥', x: 50, y: 16, tamano: 64 },
+  },
+]
