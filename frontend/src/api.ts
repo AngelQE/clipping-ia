@@ -1,4 +1,4 @@
-import type { Clip, Estado } from './types'
+import type { Clip, Estado, Trabajo } from './types'
 
 async function pedir<T>(url: string, opciones?: RequestInit): Promise<T> {
   const r = await fetch(url, opciones)
@@ -14,18 +14,27 @@ async function pedir<T>(url: string, opciones?: RequestInit): Promise<T> {
   return r.json() as Promise<T>
 }
 
+const POST_JSON = (cuerpo: unknown): RequestInit => ({
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(cuerpo),
+})
+
+const enc = encodeURIComponent
+
 export const listarClips = () => pedir<Clip[]>('/api/clips')
 
-export const guardarClip = (clip: Clip) =>
-  pedir<Clip>(`/api/clips/${encodeURIComponent(clip.id)}/guardar`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ inicio: clip.inicio, fin: clip.fin, tituloVideo: clip.tituloVideo }),
-  })
+/** Pone el clip en la cola de regeneración. Con aprobar=true se aprueba al terminar bien. */
+export const guardarClip = (clip: Clip, aprobar: boolean) =>
+  pedir<Trabajo>(
+    `/api/clips/${enc(clip.id)}/guardar`,
+    POST_JSON({ inicio: clip.inicio, fin: clip.fin, tituloVideo: clip.tituloVideo, aprobar }),
+  )
 
-  export const cambiarEstado = (id: string, estado: Estado) =>
-  pedir<Clip>(`/api/clips/${encodeURIComponent(id)}/estado`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ estado }),
-  })
+export const listarTrabajos = () => pedir<Trabajo[]>('/api/trabajos')
+
+export const cancelarTrabajo = (id: string) =>
+  pedir<{ cancelado: boolean }>(`/api/clips/${enc(id)}/cancelar`, { method: 'POST' })
+
+export const cambiarEstado = (id: string, estado: Estado) =>
+  pedir<Clip>(`/api/clips/${enc(id)}/estado`, POST_JSON({ estado }))

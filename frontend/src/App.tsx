@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { ChangeEvent, ReactNode } from 'react'
 import { Check, RefreshCw, Save, Undo2, Upload, X } from 'lucide-react'
-import { cambiarEstado, guardarClip, listarClips } from './api'
+import { cambiarEstado, cancelarTrabajo, guardarClip, listarClips, listarTrabajos } from './api'
 import PreviewStage from './components/PreviewStage'
 import Timeline from './components/Timeline'
 import TituloPanel from './components/TituloPanel'
@@ -9,7 +9,7 @@ import { clipsDemo } from './demo'
 import { clamp } from './lib/num'
 import { formatTime } from './lib/time'
 import { useAncho } from './lib/useAncho'
-import type { Clip, Estado, TituloVideo } from './types'
+import type { Clip, Estado, TituloVideo, Trabajo } from './types'
 
 type Modo = 'cargando' | 'real' | 'demo' | 'error'
 type Filtro = 'todos' | Estado
@@ -24,12 +24,23 @@ const NOMBRE: Record<Filtro, string> = {
 }
 
 const firma = (c: Clip) => JSON.stringify([c.inicio, c.fin, c.tituloVideo])
+const recortar = (texto: string, max = 40) => (texto.length > max ? `${texto.slice(0, max - 1)}…` : texto)
+const espera = (ms: number) => new Promise((ok) => setTimeout(ok, ms))
 
 function Atajo({ children }: { children: ReactNode }) {
   return (
     <kbd className="rounded border border-current/30 px-1 text-[10px] font-medium leading-4 opacity-70">
       {children}
     </kbd>
+  )
+}
+
+function Spinner() {
+  return (
+    <span
+      aria-hidden
+      className="inline-block h-3.5 w-3.5 shrink-0 rounded-full border-2 border-current border-t-transparent motion-safe:animate-spin"
+    />
   )
 }
 
@@ -59,18 +70,46 @@ export default function App() {
   const [zonasSeguras, setZonasSeguras] = useState(false)
   const [videoLocal, setVideoLocal] = useState<string | null>(null) // solo para la demostración
   const [fps, setFps] = useState(30)
-  const [ocupado, setOcupado] = useState(false)
-  const [aviso, setAviso] = useState<{ tipo: 'ok' | 'error'; texto: string } | null>(null)
+  const [ocupado, setOcupado] = useState(false) // cambios de estado, que son instantáneos
+  const [trabajos, setTrabajos] = useState<Record<string, Trabajo>>({}) // regeneraciones en marcha, por clip
+  const [cancelando, setCancelando] = useState<Record<string, boolean>>({})
+  const [aviso, setAviso] = useState<{ tipo: 'ok' | 'error' | 'info'; texto: string } | null>(null)
 
   const videoRef = useRef<HTMLVideoElement>(null)
   const archivoRef = useRef<HTMLInputElement>(null)
   const izq = useAncho(300, 240, 480, true)
   const der = useAncho(320, 260, 520, false)
 
+  // Aplica lo que informa el servidor sobre los trabajos
+  const procesarTrabajos = useCallback((lista: Trabajo[]) => {
+    const activos: Record<string, Trabajo> = {}
+    for (const t of lista) {
+      if (t.estado === 'en_cola' || t.estado === 'procesando') {
+        activos[t.id] = t
+      } else if (t.estado === 'listo' && t.clip) {
+        const clip = t.clip
+        setClips((prev) => prev.map((c) => (c.id === clip.id ? clip : c)))
+        setBase((prev) => ({ ...prev, [clip.id]: clip }))
+        setAviso({
+          tipo: 'ok',
+          texto: `«${recortar(clip.titulo)}» ${t.aprobar ? 'regenerado y aprobado' : 'regenerado'}`,
+        })
+      } else if (t.estado === 'error') {
+        setAviso({ tipo: 'error', texto: t.mensaje || 'No se pudo regenerar el clip' })
+      } else if (t.estado === 'cancelado') {
+        setAviso({ tipo: 'info', texto: 'Cancelado: el clip sigue como estaba' })
+      }
+    }
+    setTrabajos(activos)
+    setCancelando((prev) => Object.fromEntries(Object.entries(prev).filter(([id]) => activos[id])))
+  }, [])
+
   const aplicar = useCallback((lista: Clip[], nuevoModo: Modo) => {
     setClips(lista)
     setBase(Object.fromEntries(lista.map((c) => [c.id, c])))
     setSelId(lista.find((c) => c.estado === 'pendiente')?.id ?? lista[0]?.id ?? null)
+    setTrabajos({})
+    setCancelando({})
     setModo(nuevoModo)
     setAviso(null)
   }, [])
@@ -78,20 +117,41 @@ export default function App() {
   const cargar = useCallback(() => {
     setModo('cargando')
     listarClips()
-      .then((lista) => aplicar(lista, 'real'))
+      .then((lista) => {
+        aplicar(lista, 'real')
+        // Si había regeneraciones en marcha antes de recargar la página, se retoman
+        return listarTrabajos()
+          .then(procesarTrabajos)
+          .catch(() => {})
+      })
       .catch((e: unknown) => {
         setErrorCarga(e instanceof Error ? e.message : 'No se pudo conectar con el servidor.')
         setModo('error')
       })
-  }, [aplicar])
+  }, [aplicar, procesarTrabajos])
 
   useEffect(() => {
     cargar()
   }, [cargar])
 
+  // Mientras haya regeneraciones activas, se consulta al servidor cada segundo
+  const hayActivos = Object.keys(trabajos).length > 0
+  useEffect(() => {
+    if (modo !== 'real' || !hayActivos) return
+    const reloj = window.setInterval(() => {
+      listarTrabajos()
+        .then(procesarTrabajos)
+        .catch(() => {})
+    }, 1000)
+    return () => window.clearInterval(reloj)
+  }, [modo, hayActivos, procesarTrabajos])
+
   const sel = clips.find((c) => c.id === selId) ?? null
   const guardado = sel ? base[sel.id] : undefined
   const sucio = !!sel && !!guardado && firma(sel) !== firma(guardado)
+  const trabajoSel = sel ? trabajos[sel.id] : undefined
+  const bloqueado = !!trabajoSel // el clip se está regenerando: no se edita ni se aprueba
+  const activos = Object.values(trabajos)
   const videoSrc = modo === 'demo' ? videoLocal : sel?.videoUrl || null
 
   const conteo: Record<Filtro, number> = {
@@ -118,48 +178,65 @@ export default function App() {
     actualizarClip({ tituloVideo: { ...sel.tituloVideo, ...cambios } })
   }
 
-  const guardar = async (): Promise<Clip | null> => {
-    if (!sel || modo !== 'real' || !sucio || ocupado) return null
-    setOcupado(true)
+  const irAlSiguientePendiente = (idActual: string) => {
+    const i = clips.findIndex((c) => c.id === idActual)
+    const orden = [...clips.slice(i + 1), ...clips.slice(0, Math.max(i, 0))]
+    const siguiente = orden.find((c) => c.estado === 'pendiente' && !trabajos[c.id])
+    if (siguiente) setSelId(siguiente.id)
+  }
+
+  // Manda el clip a regenerarse en segundo plano (con aprobar=true se aprueba solo al terminar bien)
+  const lanzar = async (aprobar: boolean) => {
+    if (!sel || modo !== 'real' || !sucio || bloqueado) return
+    const id = sel.id
     setAviso(null)
     try {
-      const nuevo = await guardarClip(sel)
-      setClips((prev) => prev.map((c) => (c.id === nuevo.id ? nuevo : c)))
-      setBase((prev) => ({ ...prev, [nuevo.id]: nuevo }))
-      setAviso({ tipo: 'ok', texto: 'Clip regenerado' })
-      return nuevo
+      const t = await guardarClip(sel, aprobar)
+      setTrabajos((prev) => ({ ...prev, [id]: t }))
+      if (aprobar) irAlSiguientePendiente(id) // se sigue revisando mientras tanto
     } catch (e) {
       setAviso({ tipo: 'error', texto: e instanceof Error ? e.message : 'No se pudo guardar' })
-      return null
-    } finally {
-      setOcupado(false)
     }
   }
 
+  const guardar = async () => {
+    await lanzar(false)
+  }
+
+  const cancelar = async () => {
+    if (!sel || !trabajoSel || cancelando[sel.id]) return
+    const id = sel.id
+    setCancelando((prev) => ({ ...prev, [id]: true }))
+    try {
+      // Se reintenta unas veces por si el servidor todavía no había registrado el trabajo
+      for (let i = 0; i < 4; i++) {
+        const r = await cancelarTrabajo(id)
+        if (r.cancelado) break
+        await espera(250)
+      }
+    } catch {
+      // si no se pudo avisar al servidor, el trabajo terminará por su cuenta
+    }
+    // El aviso final llega con la siguiente consulta de trabajos
+  }
+
   const deshacer = () => {
-    if (!sel || !guardado) return
+    if (!sel || !guardado || bloqueado) return
     setClips((prev) => prev.map((c) => (c.id === sel.id ? guardado : c)))
     setAviso(null)
   }
 
-  const irAlSiguientePendiente = (idActual: string) => {
-    const i = clips.findIndex((c) => c.id === idActual)
-    const orden = [...clips.slice(i + 1), ...clips.slice(0, Math.max(i, 0))]
-    const siguiente = orden.find((c) => c.estado === 'pendiente')
-    if (siguiente) setSelId(siguiente.id)
-  }
-
   const decidir = async (estado: Estado) => {
-    if (!sel || ocupado) return
+    if (!sel || ocupado || bloqueado) return
     if (!sucio && sel.estado === estado) return
-    const id = sel.id
 
-    // Aprobar con cambios sin guardar: primero se guardan; si falla, no se aprueba
+    // Aprobar con cambios sin guardar: se regenera y se aprueba en segundo plano
     if (estado === 'aprobado' && sucio && modo === 'real') {
-      const ok = await guardar()
-      if (!ok) return
+      await lanzar(true)
+      return
     }
 
+    const id = sel.id
     setOcupado(true)
     setAviso(null)
     try {
@@ -181,9 +258,9 @@ export default function App() {
   }
 
   // Atajos de teclado (siempre con la versión más reciente de las funciones)
-  const accionesRef = useRef({ guardar, decidir, mover })
+  const accionesRef = useRef({ guardar, decidir, mover, cancelar })
   useEffect(() => {
-    accionesRef.current = { guardar, decidir, mover }
+    accionesRef.current = { guardar, decidir, mover, cancelar }
   })
   useEffect(() => {
     const alTeclear = (e: KeyboardEvent) => {
@@ -194,6 +271,10 @@ export default function App() {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
         e.preventDefault()
         void accionesRef.current.guardar()
+        return
+      }
+      if (e.key === 'Escape') {
+        void accionesRef.current.cancelar()
         return
       }
       if (escribiendo || e.repeat || e.ctrlKey || e.metaKey || e.altKey) return
@@ -287,24 +368,50 @@ export default function App() {
           <span
             role="status"
             aria-live="polite"
-            className={`text-sm ${ocupado ? 'text-muted' : aviso?.tipo === 'error' ? 'text-bad' : 'text-ok'}`}
+            className={`flex items-center gap-2 text-sm ${
+              activos.length > 0 || aviso?.tipo === 'info'
+                ? 'text-muted'
+                : aviso?.tipo === 'error'
+                  ? 'text-bad'
+                  : 'text-ok'
+            }`}
           >
-            {ocupado ? 'Trabajando… puede tardar unos segundos' : aviso?.texto}
+            {activos.length > 0 ? (
+              <>
+                <Spinner />
+                {activos.length === 1 ? '1 clip regenerándose' : `${activos.length} clips regenerándose`}
+              </>
+            ) : (
+              aviso?.texto
+            )}
           </span>
 
-          {sucio && (
+          {trabajoSel && (
+            <button
+              type="button"
+              onClick={() => void cancelar()}
+              disabled={!!cancelando[sel?.id ?? '']}
+              className={`${BOTON_BORDE} text-bad`}
+            >
+              <X size={15} aria-hidden />
+              {cancelando[sel?.id ?? ''] ? 'Cancelando…' : 'Cancelar'}
+              <Atajo>Esc</Atajo>
+            </button>
+          )}
+
+          {sucio && !bloqueado && (
             <>
               {sel?.estado === 'aprobado' && (
                 <span className="text-xs text-warn">Lo aprobado es la versión guardada</span>
               )}
-              <button type="button" onClick={deshacer} disabled={ocupado} className={BOTON_BORDE}>
+              <button type="button" onClick={deshacer} className={BOTON_BORDE}>
                 <Undo2 size={15} aria-hidden />
                 Deshacer cambios
               </button>
               <button
                 type="button"
                 onClick={() => void guardar()}
-                disabled={ocupado || modo !== 'real'}
+                disabled={modo !== 'real'}
                 title="Ctrl + S"
                 className={`${BOTON_BORDE} border-accent text-accent`}
               >
@@ -322,7 +429,7 @@ export default function App() {
               <button
                 type="button"
                 onClick={() => void decidir('descartado')}
-                disabled={ocupado}
+                disabled={ocupado || bloqueado}
                 className={`${BOTON_BORDE} text-bad`}
               >
                 <X size={15} aria-hidden />
@@ -332,7 +439,7 @@ export default function App() {
               <button
                 type="button"
                 onClick={() => void decidir('aprobado')}
-                disabled={ocupado}
+                disabled={ocupado || bloqueado}
                 className="press inline-flex items-center gap-1.5 rounded-md bg-ok px-3.5 py-1.5 text-sm font-medium text-[#06140d] disabled:cursor-not-allowed disabled:opacity-40"
               >
                 <Check size={15} aria-hidden />
@@ -345,7 +452,7 @@ export default function App() {
               <button
                 type="button"
                 onClick={() => void decidir('pendiente')}
-                disabled={ocupado}
+                disabled={ocupado || bloqueado}
                 className={BOTON_BORDE}
               >
                 <Undo2 size={15} aria-hidden />
@@ -442,6 +549,7 @@ export default function App() {
           <ul className="flex flex-col gap-2">
             {visibles.map((c) => {
               const modificado = base[c.id] ? firma(c) !== firma(base[c.id]) : false
+              const trabajo = trabajos[c.id]
               return (
                 <li key={c.id}>
                   <button
@@ -458,19 +566,26 @@ export default function App() {
                       <span className="tnum">
                         {formatTime(c.inicio)}–{formatTime(c.fin)}
                       </span>
-                      {c.estado === 'aprobado' && (
+                      {trabajo && (
+                        <span className="inline-flex items-center gap-1.5 text-accent">
+                          <Spinner />
+                          {trabajo.estado === 'en_cola' ? 'En cola' : 'Regenerando'}
+                          {trabajo.aprobar && ' y aprobando'}
+                        </span>
+                      )}
+                      {!trabajo && c.estado === 'aprobado' && (
                         <span className="inline-flex items-center gap-1 text-ok">
                           <Check size={12} aria-hidden />
                           Aprobado
                         </span>
                       )}
-                      {c.estado === 'descartado' && (
+                      {!trabajo && c.estado === 'descartado' && (
                         <span className="inline-flex items-center gap-1 text-bad">
                           <X size={12} aria-hidden />
                           Descartado
                         </span>
                       )}
-                      {modificado && (
+                      {modificado && !trabajo && (
                         <span
                           className="h-1.5 w-1.5 rounded-full bg-warn"
                           title="Cambios sin guardar"
@@ -487,7 +602,8 @@ export default function App() {
 
           <p className="mt-auto pt-4 text-xs leading-relaxed text-muted">
             <Atajo>A</Atajo> aprobar · <Atajo>D</Atajo> descartar · <Atajo>U</Atajo> pendiente ·{' '}
-            <Atajo>[</Atajo> <Atajo>]</Atajo> anterior / siguiente · <Atajo>Ctrl S</Atajo> guardar
+            <Atajo>[</Atajo> <Atajo>]</Atajo> anterior / siguiente · <Atajo>Ctrl S</Atajo> guardar ·{' '}
+            <Atajo>Esc</Atajo> cancelar
           </p>
         </aside>
 
@@ -495,39 +611,63 @@ export default function App() {
 
         {/* Vista previa y línea de tiempo */}
         <main className="flex min-h-0 min-w-0 flex-col">
-          <div className="flex min-h-0 flex-1 items-center justify-center p-4">
-            {sel ? (
-              <PreviewStage
-                titulo={sel.tituloVideo}
-                onChange={actualizarTitulo}
-                zonasSeguras={zonasSeguras}
+          {trabajoSel && (
+            <div
+              role="status"
+              className="flex shrink-0 items-center gap-2 border-b border-line bg-raised px-4 py-2 text-sm"
+            >
+              <span className="text-accent">
+                <Spinner />
+              </span>
+              <span>
+                {trabajoSel.estado === 'en_cola'
+                  ? 'En cola: este clip se regenerará cuando termine el anterior.'
+                  : 'Regenerando este clip…'}
+                {trabajoSel.aprobar && ' Se aprobará al terminar.'}
+              </span>
+              <span className="text-muted">Mientras tanto puedes revisar otros clips.</span>
+            </div>
+          )}
+
+          {/* inert: el clip que se regenera no se puede tocar */}
+          <div inert={bloqueado} className={`flex min-h-0 flex-1 flex-col ${bloqueado ? 'opacity-60' : ''}`}>
+            <div className="flex min-h-0 flex-1 items-center justify-center p-4">
+              {sel ? (
+                <PreviewStage
+                  titulo={sel.tituloVideo}
+                  onChange={actualizarTitulo}
+                  zonasSeguras={zonasSeguras}
+                  videoRef={videoRef}
+                  videoSrc={videoSrc}
+                  onVideoListo={alVideoListo}
+                />
+              ) : (
+                <p className="text-sm text-muted">{modo === 'cargando' ? 'Cargando clips…' : 'Selecciona un clip'}</p>
+              )}
+            </div>
+            {sel && (
+              <Timeline
                 videoRef={videoRef}
                 videoSrc={videoSrc}
-                onVideoListo={alVideoListo}
+                clipId={sel.id}
+                inicio={sel.inicio}
+                fin={sel.fin}
+                ventana={sel.ventana}
+                fps={fps}
+                onFps={setFps}
+                onCambio={actualizarClip}
               />
-            ) : (
-              <p className="text-sm text-muted">{modo === 'cargando' ? 'Cargando clips…' : 'Selecciona un clip'}</p>
             )}
           </div>
-          {sel && (
-            <Timeline
-              videoRef={videoRef}
-              videoSrc={videoSrc}
-              clipId={sel.id}
-              inicio={sel.inicio}
-              fin={sel.fin}
-              ventana={sel.ventana}
-              fps={fps}
-              onFps={setFps}
-              onCambio={actualizarClip}
-            />
-          )}
         </main>
 
         <Divisor etiqueta="Ancho del panel de ajustes" panel={der} />
 
         {/* Ajustes */}
-        <section className="min-w-0 overflow-y-auto bg-panel p-4">
+        <section
+          inert={bloqueado}
+          className={`min-w-0 overflow-y-auto bg-panel p-4 ${bloqueado ? 'opacity-60' : ''}`}
+        >
           {sel && (
             <>
               <h2 className="text-xs font-medium uppercase tracking-wider text-muted">Por qué se eligió</h2>

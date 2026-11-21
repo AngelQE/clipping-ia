@@ -22,3 +22,13 @@ export interface Clip {
   videoUrl: string // vacío en la demostración
   tituloVideo: TituloVideo
 }
+
+export type EstadoTrabajo = 'en_cola' | 'procesando' | 'listo' | 'error' | 'cancelado'
+
+export interface Trabajo {
+  id: string
+  estado: EstadoTrabajo
+  aprobar: boolean // si el clip se aprueba al terminar
+  mensaje: string
+  clip: Clip | null // el clip ya regenerado, cuando termina bien
+}

@@ -104,10 +104,23 @@ def _palabras_del_tramo(palabras_abs, inicio, fin):
         })
     return salida
 
+class Cancelado(Exception):
+    """La persona canceló la operación mientras se generaba el clip."""
+
+
+def _borrar(ruta):
+    try:
+        os.remove(ruta)
+    except OSError:
+        pass
+
 
 def _renderizar(ruta_video, inicio, fin, destino, formato, palabras=None, estilo_sub=None,
-                n=0, titulo=None):
-    """Corta un clip con ffmpeg, con subtítulos y/o título quemados (tiempos de las palabras relativos al clip)."""
+                n=0, titulo=None, cancelar=None):
+    """Corta un clip con ffmpeg, con subtítulos y/o título quemados (tiempos de las palabras relativos al clip).
+    Escribe primero en un archivo temporal y solo si todo sale bien reemplaza el clip anterior:
+    un fallo o una cancelación nunca dañan el clip que ya existe.
+    cancelar: un threading.Event. Si se activa, se detiene ffmpeg y se lanza Cancelado."""
     vf = FILTROS.get(formato)
     if palabras or titulo:
         os.makedirs("cache/subs", exist_ok=True)
@@ -119,14 +132,38 @@ def _renderizar(ruta_video, inicio, fin, destino, formato, palabras=None, estilo
             if carpeta_fuentes:
                 filtro_ass += f":fontsdir={carpeta_fuentes}"
             vf = f"{vf},{filtro_ass}" if vf else filtro_ass
+
+    temporal = os.path.splitext(destino)[0] + ".tmp.mp4"
     comando = ["ffmpeg", "-y", "-ss", f"{inicio:.3f}", "-i", ruta_video, "-t", f"{fin - inicio:.3f}"]
     if vf:
         comando += ["-vf", vf]
     comando += ["-c:v", "libx264", "-preset", "fast", "-crf", "20",
-                "-c:a", "aac", "-loglevel", "error", destino]
-    r = subprocess.run(comando, capture_output=True)
-    if r.returncode != 0:
-        print(f"[Cortador] Error: {r.stderr.decode(errors='ignore')}")
+                "-c:a", "aac", "-loglevel", "error", temporal]
+
+    proc = subprocess.Popen(comando, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+    while True:
+        try:
+            _, errores = proc.communicate(timeout=0.2)
+            break
+        except subprocess.TimeoutExpired:
+            if cancelar is not None and cancelar.is_set():
+                proc.kill()
+                proc.communicate()
+                _borrar(temporal)
+                raise Cancelado()
+
+    if cancelar is not None and cancelar.is_set():
+        _borrar(temporal)
+        raise Cancelado()
+    if proc.returncode != 0:
+        print(f"[Cortador] Error: {errores.decode(errors='ignore')}")
+        _borrar(temporal)
+        return False
+    try:
+        os.replace(temporal, destino)
+    except OSError as e:
+        print(f"[Cortador] No pude reemplazar {destino} ({e}). ¿Lo tienes abierto en un reproductor?")
+        _borrar(temporal)
         return False
     return True
 
@@ -214,7 +251,7 @@ def mostrar_palabras(ruta_json):
 
 
 def regenerar_clip(ruta_json, correcciones=None, estilo_sub=None, inicio=None, fin=None,
-                   mover_inicio=0.0, mover_fin=0.0, titulo_en_video=_SIN_CAMBIO):
+                   mover_inicio=0.0, mover_fin=0.0, titulo_en_video=_SIN_CAMBIO, cancelar=None):
     """Vuelve a crear un clip desde el video original, sin transcribir de nuevo.
     correcciones: {12: "palabra correcta"} (por número) o {"palabra mala": "palabra buena"}.
     estilo_sub: solo lo que quieras cambiar, por ejemplo {"tamano": 48}.
@@ -258,7 +295,8 @@ def regenerar_clip(ruta_json, correcciones=None, estilo_sub=None, inicio=None, f
 
     palabras_clip = _palabras_del_tramo(palabras, nuevo_inicio, nuevo_fin) if palabras else None
     ok = _renderizar(datos["video"], nuevo_inicio, nuevo_fin, datos["archivo"], datos["formato"],
-                     palabras_clip, datos.get("estilo_sub"), n=0, titulo=datos.get("titulo_video"))
+                     palabras_clip, datos.get("estilo_sub"), n=0, titulo=datos.get("titulo_video"),
+                     cancelar=cancelar)
     if ok:
         datos["inicio"], datos["fin"], datos["palabras"] = round(nuevo_inicio, 3), round(nuevo_fin, 3), palabras
         _guardar_datos(ruta_json, datos)

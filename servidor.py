@@ -3,22 +3,54 @@ import json
 import mimetypes
 import os
 import subprocess
-from functools import lru_cache
-from urllib.parse import quote
 import threading
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
+from functools import lru_cache
 from typing import Literal
+from urllib.parse import quote
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
-from core.cortador import regenerar_clip
+from core.cortador import Cancelado, regenerar_clip
 
 CARPETA_SALIDA = "salida"
 
 app = FastAPI(title="Clipping IA")
-BLOQUEO = threading.Lock()  # un cambio a la vez sobre los .json de los clips
+
+
+# --- Regeneración en segundo plano ---------------------------------------------------------
+
+EJECUTOR = ThreadPoolExecutor(max_workers=1, thread_name_prefix="render")  # un render a la vez
+TRABAJOS_LOCK = threading.Lock()  # protege TRABAJOS y CANDADOS; las secciones críticas son muy cortas
+CANDADOS: dict[str, threading.Lock] = {}  # un candado por clip, para leer/escribir su .json
+
+
+class Trabajo:
+    def __init__(self, clip_id: str, aprobar: bool):
+        self.clip_id = clip_id
+        self.aprobar = aprobar
+        self.estado = "en_cola"  # en_cola | procesando | listo | error | cancelado
+        self.mensaje = ""
+        self.clip: dict | None = None
+        self.evento = threading.Event()  # se activa para cancelar
+
+
+TRABAJOS: dict[str, Trabajo] = {}
+
+
+def _candado(clip_id: str) -> threading.Lock:
+    with TRABAJOS_LOCK:
+        return CANDADOS.setdefault(clip_id, threading.Lock())
+
+
+def _info(t: Trabajo) -> dict:
+    return {"id": t.clip_id, "estado": t.estado, "aprobar": t.aprobar, "mensaje": t.mensaje, "clip": t.clip}
+
+
+# --- Utilidades ---------------------------------------------------------------------------
 
 
 def _ruta_json(clip_id: str) -> str:
@@ -36,9 +68,11 @@ def _leer(ruta: str) -> dict:
     with open(ruta, encoding="utf-8") as f:
         return json.load(f)
 
+
 def _escribir(ruta: str, d: dict) -> None:
     with open(ruta, "w", encoding="utf-8") as f:
         json.dump(d, f, ensure_ascii=False, indent=2)
+
 
 def _num(valor, defecto):
     return defecto if valor is None else valor
@@ -69,12 +103,12 @@ def _a_clip(clip_id: str, d: dict) -> dict:
         "id": clip_id,
         "titulo": d.get("titulo", clip_id),
         "tipo": d.get("tipo") or "?",
+        "estado": d.get("estado", "pendiente"),
         "inicio": inicio,
         "fin": fin,
         "ventana": ventana,
         "puntaje": d.get("puntaje") or 0,
         "razon": d.get("razon", ""),
-        "estado": d.get("estado", "pendiente"),
         "fps": _fps(d["video"]) if d.get("video") else None,
         "videoUrl": f"/media/fuente/{quote(clip_id)}",
         "tituloVideo": {
@@ -85,6 +119,67 @@ def _a_clip(clip_id: str, d: dict) -> dict:
             "tamano": _num(t.get("tamano"), 64),
         },
     }
+
+
+# --- Modelos de entrada -------------------------------------------------------------------
+
+
+class TituloEntrada(BaseModel):
+    visible: bool = True
+    texto: str = ""
+    x: float = 50.0
+    y: float = 16.0
+    tamano: float = 64.0
+
+
+class GuardarEntrada(BaseModel):
+    inicio: float
+    fin: float
+    tituloVideo: TituloEntrada
+    aprobar: bool = False  # si es True, el clip se aprueba al terminar de regenerarse
+
+
+class EstadoEntrada(BaseModel):
+    estado: Literal["pendiente", "aprobado", "descartado"]
+
+
+# --- Trabajo en segundo plano -------------------------------------------------------------
+
+
+def _ejecutar(trabajo: Trabajo, ruta: str, datos: GuardarEntrada, titulo) -> None:
+    """Corre en el hilo de render: regenera el clip y, si se pidió, lo aprueba al terminar."""
+    with TRABAJOS_LOCK:
+        if trabajo.evento.is_set():  # se canceló mientras esperaba en la cola
+            trabajo.estado = "cancelado"
+            return
+        trabajo.estado = "procesando"
+
+    try:
+        with _candado(trabajo.clip_id):
+            ok = regenerar_clip(
+                ruta, inicio=datos.inicio, fin=datos.fin, titulo_en_video=titulo, cancelar=trabajo.evento
+            )
+            if not ok:
+                trabajo.estado = "error"
+                trabajo.mensaje = "No se pudo regenerar el clip (revisa la consola del servidor)"
+                return
+            d = _leer(ruta)
+            if trabajo.aprobar:
+                d["estado"] = "aprobado"
+                d["estado_fecha"] = datetime.now().isoformat(timespec="seconds")
+            elif d.get("estado") == "aprobado":
+                d["estado"] = "pendiente"  # si cambió, lo aprobado ya no es lo que hay: vuelve a revisión
+            _escribir(ruta, d)
+            trabajo.clip = _a_clip(trabajo.clip_id, d)
+            trabajo.estado = "listo"
+    except Cancelado:
+        trabajo.estado = "cancelado"
+    except Exception as e:  # cualquier fallo se informa a la interfaz, no se pierde en el hilo
+        trabajo.estado = "error"
+        trabajo.mensaje = f"Error inesperado: {e}"
+
+
+# --- API ----------------------------------------------------------------------------------
 
 
 @app.get("/api/clips")
@@ -101,25 +196,9 @@ def listar_clips():
     return clips
 
 
-class TituloEntrada(BaseModel):
-    visible: bool = True
-    texto: str = ""
-    x: float = 50.0
-    y: float = 16.0
-    tamano: float = 64.0
-
-
-class GuardarEntrada(BaseModel):
-    inicio: float
-    fin: float
-    tituloVideo: TituloEntrada
-
-
-
-@app.post("/api/clips/{clip_id}/guardar")
+@app.post("/api/clips/{clip_id}/guardar", status_code=202)
 def guardar_clip(clip_id: str, datos: GuardarEntrada):
-    """Regenera el clip desde el video original con los tiempos y el título que eligió la persona.
-    Es una función normal (no async), así FastAPI la corre en otro hilo y el servidor no se bloquea."""
+    """Pone el clip en la cola de regeneración y responde enseguida. El avance se consulta en /api/trabajos."""
     ruta = _ruta_json(clip_id)
     if datos.fin - datos.inicio < 1:
         raise HTTPException(status_code=422, detail="El clip debe durar al menos 1 segundo")
@@ -127,29 +206,48 @@ def guardar_clip(clip_id: str, datos: GuardarEntrada):
     t = datos.tituloVideo
     titulo = {"texto": t.texto, "x": t.x, "y": t.y, "tamano": t.tamano} if t.visible and t.texto.strip() else False
 
-    with BLOQUEO:
-        ok = regenerar_clip(ruta, inicio=datos.inicio, fin=datos.fin, titulo_en_video=titulo)
-        if not ok:
-            raise HTTPException(
-                status_code=422,
-                detail="No se pudo regenerar el clip (revisa la consola del servidor)",
-            )
-        d = _leer(ruta)
-        if d.get("estado") == "aprobado":
-            # Si cambió, lo aprobado ya no es lo que hay: vuelve a revisión
-            d["estado"] = "pendiente"
-            _escribir(ruta, d)
-    return _a_clip(clip_id, d)
+    with TRABAJOS_LOCK:
+        previo = TRABAJOS.get(clip_id)
+        if previo and previo.estado in ("en_cola", "procesando"):
+            raise HTTPException(status_code=409, detail="Este clip ya se está procesando")
+        trabajo = Trabajo(clip_id, datos.aprobar)
+        TRABAJOS[clip_id] = trabajo
+
+    EJECUTOR.submit(_ejecutar, trabajo, ruta, datos, titulo)
+    return _info(trabajo)
 
 
-class EstadoEntrada(BaseModel):
-    estado: Literal["pendiente", "aprobado", "descartado"]
+@app.get("/api/trabajos")
+def listar_trabajos():
+    """Trabajos activos y los que acaban de terminar. Cada resultado final se entrega una sola vez."""
+    with TRABAJOS_LOCK:
+        salida = [_info(t) for t in TRABAJOS.values()]
+        for clave in [k for k, t in TRABAJOS.items() if t.estado in ("listo", "error", "cancelado")]:
+            del TRABAJOS[clave]
+    return salida
+
+
+@app.post("/api/clips/{clip_id}/cancelar")
+def cancelar_trabajo(clip_id: str):
+    """Cancela un trabajo en cola (al instante) o en proceso (se detiene ffmpeg)."""
+    with TRABAJOS_LOCK:
+        t = TRABAJOS.get(clip_id)
+        if t is None or t.estado not in ("en_cola", "procesando"):
+            return {"cancelado": False}
+        t.evento.set()
+        if t.estado == "en_cola":
+            t.estado = "cancelado"
+    return {"cancelado": True}
 
 
 @app.post("/api/clips/{clip_id}/estado")
 def cambiar_estado(clip_id: str, datos: EstadoEntrada):
     ruta = _ruta_json(clip_id)
-    with BLOQUEO:
+    with TRABAJOS_LOCK:
+        t = TRABAJOS.get(clip_id)
+        if t is not None and t.estado in ("en_cola", "procesando"):
+            raise HTTPException(status_code=409, detail="El clip se está regenerando")
+    with _candado(clip_id):
         d = _leer(ruta)
         d["estado"] = datos.estado
         d["estado_fecha"] = datetime.now().isoformat(timespec="seconds")
