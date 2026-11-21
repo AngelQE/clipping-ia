@@ -9,8 +9,9 @@ export interface Clip {
   id: string
   titulo: string
   tipo: string
-  inicio: number // segundos
+  inicio: number // segundos del video original
   fin: number
+  ventana: [number, number] // rango del video con datos disponibles (la ventana de seguridad)
   puntaje: number
   razon: string
   tituloVideo: TituloVideo

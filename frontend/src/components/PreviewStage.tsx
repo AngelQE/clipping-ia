@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import type { KeyboardEvent, PointerEvent } from 'react'
+import type { KeyboardEvent, PointerEvent, RefObject } from 'react'
 import { clamp, redondear1 } from '../lib/num'
 import type { TituloVideo } from '../types'
 
@@ -7,6 +7,9 @@ interface Props {
   titulo: TituloVideo
   onChange: (cambios: Partial<TituloVideo>) => void
   zonasSeguras: boolean
+  videoRef: RefObject<HTMLVideoElement | null>
+  videoSrc: string | null
+  onVideoListo: (duracion: number) => void
 }
 
 const ANCHO_REF = 1080 // el ancho del video final
@@ -19,7 +22,14 @@ const movimientos: Record<string, [number, number]> = {
   ArrowDown: [0, 1],
 }
 
-export default function PreviewStage({ titulo, onChange, zonasSeguras }: Props) {
+export default function PreviewStage({
+  titulo,
+  onChange,
+  zonasSeguras,
+  videoRef,
+  videoSrc,
+  onVideoListo,
+}: Props) {
   const escenaRef = useRef<HTMLDivElement>(null)
   const desfase = useRef({ x: 0, y: 0 })
   const [arrastrando, setArrastrando] = useState(false)
@@ -75,9 +85,22 @@ export default function PreviewStage({ titulo, onChange, zonasSeguras }: Props) 
       ref={escenaRef}
       className="relative aspect-9/16 h-full max-h-full max-w-full overflow-hidden rounded-xl border border-line bg-[radial-gradient(ellipse_at_top,#1d2735,#07090d)] @container"
     >
-      {/* Donde irá el video, igual que en el formato borroso */}
-      <div className="absolute inset-x-0 top-1/2 flex aspect-video -translate-y-1/2 items-center justify-center bg-[#222c3a] text-xs text-muted">
-        Video (demostración)
+      {/* Donde va el video, igual que en el formato borroso */}
+      <div className="absolute inset-x-0 top-1/2 aspect-video -translate-y-1/2 bg-black">
+        {videoSrc ? (
+          <video
+            ref={videoRef}
+            src={videoSrc}
+            playsInline
+            preload="auto"
+            onLoadedMetadata={(e) => onVideoListo(e.currentTarget.duration)}
+            className="h-full w-full object-contain"
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center bg-[#222c3a] text-xs text-muted">
+            Video (demostración)
+          </div>
+        )}
       </div>
 
       {zonasSeguras && (
