@@ -2,13 +2,18 @@
   "archivo": "salida\\01_Superman estrangula al perrito.mp4",
   "video": "C:\\Proyectos\\clipping-ia\\videos\\Gm5BJ07acMI.mp4",
   "inicio": 0.0,
-  "fin": 53.28,
+  "fin": 56.6,
   "ventana": [
     0.0,
     59.28
   ],
   "titulo": "Superman estrangula al perrito",
-  "titulo_video": null,
+  "titulo_video": {
+    "texto": "Fernan regresa en GTA V\n😂😂",
+    "x": 50.0,
+    "y": 21.6,
+    "tamano": 64.0
+  },
   "razon": "El creador reacciona con burla y sorpresa al ver a Superman estrangulando al perrito, lo que contrasta con la idea de un superhéroe protector. La reacción es intensa y auténtica, con interjecciones y comentarios ingeniosos.",
   "puntaje": 9.0,
   "formato": "borroso",
@@ -760,5 +765,7 @@
       "fin": 59.18,
       "texto": "¡¿HUUUU?!"
     }
-  ]
+  ],
+  "estado": "aprobado",
+  "estado_fecha": "2026-11-21T02:07:33"
 }

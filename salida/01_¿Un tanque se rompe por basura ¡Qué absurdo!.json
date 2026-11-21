@@ -1,7 +1,7 @@
 {
   "archivo": "salida\\01_¿Un tanque se rompe por basura ¡Qué absurdo!.mp4",
   "video": "C:\\Proyectos\\clipping-ia\\videos\\prueba.mp4",
-  "inicio": 9.21,
+  "inicio": 11.267,
   "fin": 89.47,
   "ventana": [
     8.71,
@@ -1289,5 +1289,13 @@
       "fin": 89.94,
       "texto": "busque."
     }
-  ]
+  ],
+  "estado": "pendiente",
+  "estado_fecha": "2026-11-21T02:27:46",
+  "titulo_video": {
+    "texto": "a",
+    "x": 50.0,
+    "y": 16.0,
+    "tamano": 64.0
+  }
 }

@@ -133,6 +133,7 @@ export default function PreviewStage({
           WebkitTextStroke: `${trazo} #000`,
           paintOrder: 'stroke fill',
           opacity: titulo.texto ? 1 : 0.4,
+          display: titulo.visible ? undefined : 'none',
         }}
       >
         {titulo.texto || 'Escribe un título'}

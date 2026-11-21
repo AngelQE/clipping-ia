@@ -56,6 +56,14 @@ function Campo({ etiqueta, valor, min, max, paso, unidad, onChange }: CampoProps
 export default function TituloPanel({ titulo, onChange, zonasSeguras, onZonasSeguras }: Props) {
   return (
     <div className="flex flex-col gap-4">
+      <label className="flex items-center justify-between gap-3 text-sm">
+        Mostrar título en el video
+        <input
+          type="checkbox"
+          checked={titulo.visible}
+          onChange={(e) => onChange({ visible: e.target.checked })}
+        />
+      </label>
       <label className="flex flex-col gap-1.5 text-sm text-muted">
         Texto del título
         <textarea

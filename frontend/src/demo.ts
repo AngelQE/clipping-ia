@@ -1,6 +1,8 @@
-import type { Clip } from './types'
+import type { Clip, TituloVideo } from './types'
 
-export const clipsDemo: Clip[] = [
+const titulo = (texto: string): TituloVideo => ({ visible: true, texto, x: 50, y: 16, tamano: 64 })
+
+const clipsBase: Omit<Clip, 'estado'>[] = [
   {
     id: 'c1',
     titulo: 'Un tanque se bloquea con basura',
@@ -10,7 +12,8 @@ export const clipsDemo: Clip[] = [
     ventana: [306.4, 364.1],
     puntaje: 9,
     razon: 'Planteamiento claro, reacción de incredulidad y remate gracioso.',
-    tituloVideo: { texto: 'Un tanque se bloquea con basura', x: 50, y: 16, tamano: 64 },
+    videoUrl: '',
+    tituloVideo: titulo('Un tanque se bloquea con basura'),
   },
   {
     id: 'c2',
@@ -21,7 +24,8 @@ export const clipsDemo: Clip[] = [
     ventana: [89.0, 177.5],
     puntaje: 8,
     razon: 'Pregunta fuerte seguida de una anécdota completa.',
-    tituloVideo: { texto: '¿Cómo le llega a los chavos mal hablados?', x: 50, y: 16, tamano: 64 },
+    videoUrl: '',
+    tituloVideo: titulo('¿Cómo le llega a los chavos mal hablados?'),
   },
   {
     id: 'c3',
@@ -32,12 +36,8 @@ export const clipsDemo: Clip[] = [
     ventana: [634.2, 708.9],
     puntaje: 9,
     razon: 'El TikTok completo y la reacción principal justo después.',
-    tituloVideo: {
-      texto: 'De una maleta salió un hotel de 8 pisos y nadie entiende cómo cabía todo ahí dentro',
-      x: 50,
-      y: 16,
-      tamano: 64,
-    },
+    videoUrl: '',
+    tituloVideo: titulo('De una maleta salió un hotel de 8 pisos y nadie entiende cómo cabía todo ahí dentro'),
   },
   {
     id: 'c4',
@@ -48,6 +48,9 @@ export const clipsDemo: Clip[] = [
     ventana: [1514.0, 1567.4],
     puntaje: 7,
     razon: 'Pico de emoción con reacción clara del streamer.',
-    tituloVideo: { texto: '🔥 Esto NO se hace en un directo 🔥', x: 50, y: 16, tamano: 64 },
+    videoUrl: '',
+    tituloVideo: titulo('🔥 Esto NO se hace en un directo 🔥'),
   },
 ]
+
+export const clipsDemo: Clip[] = clipsBase.map((c) => ({ ...c, estado: 'pendiente' as const }))

@@ -542,6 +542,7 @@ function LineaDeTiempo({
   const manija = (lado: Lado) => {
     const valor = lado === 'inicio' ? inicio : fin
     const x = (valor - v0) * px
+
     return (
       <div
         role="slider"
@@ -570,6 +571,10 @@ function LineaDeTiempo({
       </div>
     )
   }
+
+  const opcionesFps = FPS_OPCIONES.includes(fps)
+    ? FPS_OPCIONES
+    : [...FPS_OPCIONES, fps].sort((a, b) => a - b)
 
   return (
     <section
@@ -622,7 +627,7 @@ function LineaDeTiempo({
               onChange={(e) => onFps(Number(e.target.value))}
               className="rounded-md border border-line bg-raised px-2 py-1.5 text-white"
             >
-              {FPS_OPCIONES.map((f) => (
+              {opcionesFps.map((f) => (
                 <option key={f} value={f}>
                   {f}
                 </option>

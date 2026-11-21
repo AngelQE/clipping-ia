@@ -28,6 +28,8 @@ TITULO_DEFECTO = {
     "negrita": True,
     "mayusculas": False,
     "posicion": 16,                # distancia desde ARRIBA, en % de la altura
+    "x": None,                     # % del ancho donde queda el CENTRO del título (None = centrado arriba)
+    "y": None,                     # % del alto donde queda el CENTRO del título
     "duracion": None,              # None = todo el clip; o segundos desde el inicio
     "max_lineas": 3,
 }
@@ -181,11 +183,16 @@ def crear_ass(palabras, ruta_ass, ancho, alto, estilo=None, titulo=None, duracio
         texto_t = "\\N".join(_lineas_titulo(texto_t, max_chars_t, int(t["max_lineas"])))
 
         fin_t = float(duracion_clip) if duracion_clip else 3600.0
+        fundido = "\\fad(250,250)" if t["duracion"] else "\\fad(250,0)"
         if t["duracion"]:
             fin_t = min(fin_t, float(t["duracion"]))
-            efecto = "{\\fad(250,250)}"
+        if t["x"] is not None and t["y"] is not None:
+            # Posición libre: el centro del título va en (x%, y%) del video
+            pos_x = int(ancho * float(t["x"]) / 100)
+            pos_y = int(alto * float(t["y"]) / 100)
+            efecto = f"{{\\an5\\pos({pos_x},{pos_y}){fundido}}}"
         else:
-            efecto = "{\\fad(250,0)}"
+            efecto = f"{{{fundido}}}"
 
         estilos.append(
             f"Style: Titulo,{fuente_t},{tam_t},&H00{c_texto_t},&H00{c_texto_t},&H00{c_borde_t},&H80000000,"
